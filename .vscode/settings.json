@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "futur",
+        "Futura",
+        "hoopfest",
+        "Lato",
+        "Milli",
+        "patricks",
+        "Pressable",
+        "Recents"
+    ],
+    "eslint.workingDirectories": [
+        "."
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+    }
+}

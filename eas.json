@@ -1,0 +1,57 @@
+{
+  "build": {
+    "develop": {
+      "developmentClient": false,
+      "env": {
+        "EXPO_PUBLIC_HF_BASE_URL": "https://hoopfest-register-test.azurewebsites.net",
+        "EXPO_PUBLIC_API_URL": "https://d1pxcngpve6lr5.cloudfront.net",
+        "EXPO_PUBLIC_REFRESH_COUNTER": "0",
+        "APP_VARIANT": "develop"
+      },
+      "ios": {
+        "simulator": true
+      }
+    },
+    "stage": {
+      "env": {
+        "EXPO_PUBLIC_HF_BASE_URL": "https://hoopfest-register-test.azurewebsites.net",
+        "EXPO_PUBLIC_API_URL": "https://d3417aonyb50dl.cloudfront.net",
+        "EXPO_PUBLIC_REFRESH_COUNTER": "5",
+        "APP_VARIANT": "stage"
+      }
+    },
+    "main": {
+      "env": {
+        "EXPO_PUBLIC_HF_BASE_URL": "https://register.spokanehoopfest.net",
+        "EXPO_PUBLIC_API_URL": "https://d1tbo4d6kqibfy.cloudfront.net",
+        "EXPO_PUBLIC_REFRESH_COUNTER": "60",
+        "APP_VARIANT": "main"
+      }
+    }
+  },
+  "submit": {
+    "stage": {
+      "android": {
+        "track": "production"
+      },
+      "ios": {
+        "appleId": "ryanmurphy125@gmail.com",
+        "ascAppId": "6504203633",
+        "appleTeamId": "R88JQEZ2H7"
+      }
+    },
+    "main": {
+      "android": {
+        "track": "production"
+      },
+      "ios": {
+        "appleId": "ryanmurphy125@gmail.com",
+        "ascAppId": "6478451526",
+        "appleTeamId": "R88JQEZ2H7"
+      }
+    }
+  },
+  "cli": {
+    "requireCommit": true
+  }
+}

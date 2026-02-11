@@ -1,0 +1,68 @@
+const { defineConfig } = require('eslint/config')
+const expoConfig = require('eslint-config-expo/flat')
+
+module.exports = defineConfig([
+  expoConfig,
+  {
+    ignores: ['dist/*'],
+    rules: {
+      'semi': ['error', 'never'],
+      'react-hooks/exhaustive-deps': ['error', 'never'],
+      'import/order': [
+        'error',
+        {
+          'groups': [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index'
+          ],
+          'pathGroups': [
+            {
+              'pattern': 'react',
+              'group': 'builtin',
+              'position': 'before'
+            },
+            {
+              'pattern': 'react-native',
+              'group': 'builtin',
+              'position': 'before'
+            },
+            {
+              'pattern': '@/**',
+              'group': 'internal',
+              'position': 'before'
+            }
+          ],
+          'pathGroupsExcludedImportTypes': ['react', 'react-native'],
+          'newlines-between': 'always',
+          'alphabetize': {
+            'order': 'asc',
+            'caseInsensitive': true
+          }
+        }
+      ]
+    },
+    settings: {
+      'import/resolver': {
+        alias: {
+          map: [
+            ['@components', './src/components'],
+            ['@pages', './src/screens/pages'],
+            ['@utils', './src/utils'],
+            ['@hooks', './src/hooks'],
+            ['@services', './src/services'],
+            ['@stores', './src/stores'],
+            ['@router', './src/router'],
+            ['@assets', './src/assets'],
+            ['@constants', './src/constants'],
+            ['@', './src'],
+          ],
+          extensions: ['.js', '.jsx', '.json']
+        }
+      }
+    }
+  },
+])

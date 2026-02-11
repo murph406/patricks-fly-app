@@ -1,0 +1,1 @@
+export const PATRICKS_FLY_SHOP_URL = 'https://patricksflyshop.com'
