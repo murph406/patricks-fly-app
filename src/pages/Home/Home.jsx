@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { StyleSheet, Image } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 import View from '@components/elements/View'
 
@@ -23,7 +23,6 @@ const Home = () => {
         <View style={s.spacing}/>
 
         <PatricksFlyShopDetail />
-
       </View>
     </View>
   )
