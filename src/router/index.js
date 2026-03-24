@@ -18,6 +18,8 @@ import Map from '@pages/Map'
 import Home from '@pages/Home'
 import Webview from '@pages/Webview'
 import Settings from '@pages/Settings'
+import RiverDetail from '@pages/RiverDetail'
+import RiverStationDetail from '@pages/RiverStationDetail'
 
 const MyTabNavigator = createNavigatorFactory(TabNavigator)
 
@@ -74,6 +76,8 @@ export default function Router() {
         <Stack.Navigator>
           <Stack.Group screenOptions={{ headerShown: false, animation: 'simple_push' }}>
             <Stack.Screen name="main" component={MainTabNavigator} options={{ animation: 'fade' }} />
+            <Stack.Screen name="river-detail" component={RiverDetail} />
+            <Stack.Screen name="river-station-detail" component={RiverStationDetail} />
             <Stack.Screen name="webview" component={Webview} />
             <Stack.Screen name="settings" component={Settings} />
           </Stack.Group>

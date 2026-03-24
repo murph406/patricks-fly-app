@@ -11,10 +11,23 @@ import useStyles from '@hooks/useStyles'
 const MapView = React.forwardRef(function MapView({ children, options = {} }, ref) {
   const emitterRef = React.useRef(new EventEmitter())
   const mapRef = React.useRef()
-
   const s = useStyles(createStyles)
-  const spokaneLatLng = new GeoPoint(47.658779, -117.426048)
   const seattleLatLng = new GeoPoint(47.639370, -122.326248)
+
+  options = {
+    zoomEnabled: false,
+    scrollEnabled: false,
+    rotateEnabled: false,
+    pitchEnabled: false,
+    showsUserLocation: true,
+    region: {
+      latitude: seattleLatLng.latitude,
+      longitude: seattleLatLng.longitude,
+      latitudeDelta: 0.015,
+      longitudeDelta: 0.0121,
+    },
+    ...options,
+  }
 
   React.useImperativeHandle(ref, () => {
     return {
@@ -35,7 +48,6 @@ const MapView = React.forwardRef(function MapView({ children, options = {} }, re
           animated: true,
         })
       },
-      spokaneLatLng,
       seattleLatLng,
     }
   }, [])
@@ -69,12 +81,7 @@ const MapView = React.forwardRef(function MapView({ children, options = {} }, re
       rotateEnabled={options?.rotateEnabled}
       pitchEnabled={options?.pitchEnabled}
       showsUserLocation={options?.showsUserLocation}
-      region={{
-        latitude: seattleLatLng.latitude,
-        longitude: seattleLatLng.longitude,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
-      }}>
+      region={options?.region}>
       {children}
     </ReactMapView>
   )

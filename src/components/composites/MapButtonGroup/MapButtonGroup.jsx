@@ -5,11 +5,11 @@ import MapButton from '@components/elements/MapButton'
 import Section from '@components/elements/Section'
 import { Vars } from '@constants/Vars'
 
-const MapButtonGroup = ({ label, onPress }) => {
+const MapButtonGroup = ({ label, coordinate, onPress }) => {
   return (
     <Section label={label}>
       <View style={{ paddingHorizontal: Vars.unit }}>
-        <MapButton onPress={onPress} />
+        <MapButton coordinate={coordinate} onPress={onPress} />
       </View>
     </Section>
   )

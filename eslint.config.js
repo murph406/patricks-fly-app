@@ -52,6 +52,7 @@ module.exports = defineConfig([
             ['@components', './src/components'],
             ['@pages', './src/screens/pages'],
             ['@utils', './src/utils'],
+            ['@features', './src/features'],
             ['@hooks', './src/hooks'],
             ['@services', './src/services'],
             ['@stores', './src/stores'],

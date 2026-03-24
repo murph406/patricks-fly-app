@@ -10,11 +10,12 @@ const MapPin = (props) => {
 
     return (
         <Marker
+            useLegacyPinView
             title={title}
             style={s.container}
             description={description}
             coordinate={coordinate}
-            pinColor={s.pinColor}/>
+            pinColor={s.pinColor} />
     )
 }
 
@@ -36,7 +37,7 @@ const createStyles = (theme) => {
             height: size * .6,
             width: size * .6,
         },
-        pinColor: colors.white,
+        pinColor: colors.brand,
     })
 }
 

@@ -118,20 +118,6 @@ export default () => {
         image: "latest",
         infoPlist: defaults.ios.infoPlist
       },
-      // android: {
-      //     package: 'com.hoopfest.stage',
-      //     versionCode: defaults.android.versionCode,
-      //     permissions: defaults.android.permissions,
-      //     googleServicesFile: process.env.GOOGLE_SERVICES_JSON_STAGE,
-      //     runtimeVersion: {
-      //         policy: "appVersion"
-      //     },
-      //     config: {
-      //         googleMaps: {
-      //             apiKey: "AIzaSyBv-OFKfkH-xDZ_8fJtYQZwZmOHAHKa91k"
-      //         }
-      //     }
-      // },
       updates: {
         fallbackToCacheTimeout: 0,
         url: "https://u.expo.dev/550d5b25-6f54-432a-bf7c-e01051912ad9"

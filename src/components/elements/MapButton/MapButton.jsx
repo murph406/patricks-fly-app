@@ -8,7 +8,7 @@ import useStyles from '@hooks/useStyles'
 import MapPin from '../MapPin'
 import { GeoPoint } from 'src/utils/Structures'
 
-const MapButton = ({ onPress, coordinate = new GeoPoint(47.658779, -117.426048) }) => {
+const MapButton = ({ onPress, options = {}, coordinate = new GeoPoint(47.658779, -117.426048) }) => {
   const mapRef = React.useRef()
   const s = useStyles(createStyles)
   const [pressed, setPressed] = React.useState(false)
@@ -20,6 +20,21 @@ const MapButton = ({ onPress, coordinate = new GeoPoint(47.658779, -117.426048) 
       inputRange: [0, 1],
       outputRange: [1, .975],
     })
+  }
+
+  options = {
+    zoomEnabled: false,
+    scrollEnabled: false,
+    rotateEnabled: false,
+    pitchEnabled: false,
+    showsUserLocation: true,
+    region: {
+      latitude: coordinate.latitude,
+      longitude: coordinate.longitude,
+      latitudeDelta: 0.535,
+      longitudeDelta: 0.5125,
+    },
+    ...options,
   }
 
   return (
@@ -38,13 +53,7 @@ const MapButton = ({ onPress, coordinate = new GeoPoint(47.658779, -117.426048) 
         <View style={s.position}>
           <MapView
             ref={mapRef}
-            options={{
-              scrollEnabled: false,
-              zoomEnabled: false,
-              rotateEnabled: false,
-              pitchEnabled: false,
-              showsUserLocation: false,
-            }} >
+            options={options} >
             <MapPin
               title="Spokane"
               description="Washington"

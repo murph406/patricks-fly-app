@@ -1,29 +1,40 @@
 import React from 'react'
 
-import { StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
 
 import View from '@components/elements/View'
 
 import Header from './Header'
 import useStyles from '@hooks/useStyles'
-import Text from '@components/elements/Text'
 import PatricksFlyShopDetail from '@components/features/sponsors/PatricksFlyShopDetail'
+import RiverCard from 'src/features/rivers/RiverCard'
+import HorizontalList from '@components/composites/HorizontalList'
+import { RIVERS } from 'src/config/rivers'
+import useNavigatePage from '@hooks/useNavigatePage'
 
 const Home = () => {
   const s = useStyles(createStyles)
+  const navigatePage = useNavigatePage()
 
   return (
     <View style={s.container}>
       <Header />
+      <ScrollView style={s.container}>
+        <View style={s.body}>
 
-      <View style={s.body}>
+          <HorizontalList
+            label='Rivers'
+            data={RIVERS}
+            renderItem={({ item }) => (
+              <RiverCard {...item} key={item?.Id} onPress={navigatePage('river-detail', item)} />
+            )}
+          />
 
-        <Text type='title'>Hello World</Text>
+          <View style={s.spacing} />
 
-        <View style={s.spacing}/>
-
-        <PatricksFlyShopDetail />
-      </View>
+          <PatricksFlyShopDetail />
+        </View>
+      </ScrollView>
     </View>
   )
 }
@@ -39,15 +50,13 @@ const createStyles = (theme) => {
     },
     body: {
       flex: 1,
-      gap: vars.unit,
-      justifyContent: 'center',
-      alignItems: 'center',
+      gap: vars.double,
       paddingTop: vars.unit,
       paddingBottom: vars.unit
     },
     spacing: {
       maxHeight: vars.unit * 4,
-      width: 1, 
+      width: 1,
     }
   })
 }
