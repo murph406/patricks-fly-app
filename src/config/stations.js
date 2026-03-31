@@ -39,4 +39,36 @@ export const STATIONS = {
     lat: 46.8628,
     lng: -120.4789,
   },
+  CONW1: {
+    id: 'CONW1',
+    label: 'Skagit - Near Concrete',
+    riverId: 'skagit',
+    riverName: 'Skagit River Basin',
+    lat: 48.5244,
+    lng: -121.7697,
+  },
+  MVEW1: {
+    id: 'MVEW1',
+    label: 'Skagit - Near Mt. Vernon',
+    riverId: 'skagit',
+    riverName: 'Skagit River Basin',
+    lat: 48.4450,
+    lng: -122.3342,
+  },
+  SRMW1: {
+    id: 'SRMW1',
+    label: 'Cascade - At Marblemount',
+    riverId: 'skagit',
+    riverName: 'Skagit River Basin',
+    lat: 48.5339,
+    lng: -121.429,
+  },
+  GORW1: {
+    id: 'GORW1',
+    label: 'Skagit - At Newhalem',
+    riverId: 'skagit',
+    riverName: 'Skagit River Basin',
+    lat: 48.6667,
+    lng: -121.2500,
+  }
 }
