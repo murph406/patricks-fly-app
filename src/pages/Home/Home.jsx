@@ -11,6 +11,8 @@ import RiverCard from 'src/features/rivers/RiverCard'
 import HorizontalList from '@components/composites/HorizontalList'
 import { RIVERS } from 'src/config/rivers'
 import useNavigatePage from '@hooks/useNavigatePage'
+import EmptyState from '@components/composites/EmptyState'
+import MapButtonGroup from '@components/composites/MapButtonGroup'
 
 const Home = () => {
   const s = useStyles(createStyles)
@@ -23,11 +25,27 @@ const Home = () => {
         <View style={s.body}>
 
           <HorizontalList
+            label='My Places'
+            listEmptyComponent={<EmptyState fill />}
+          />
+
+          <MapButtonGroup
+            label='Map'
+            enablePin={false}
+            onPress={navigatePage('map')}
+          />
+
+          <HorizontalList
             label='Rivers'
             data={RIVERS}
             renderItem={({ item }) => (
               <RiverCard {...item} key={item?.Id} onPress={navigatePage('river-detail', item)} />
             )}
+          />
+
+          <HorizontalList
+            label='Tidal Stations'
+            listEmptyComponent={<EmptyState fill />}
           />
 
           <View style={s.spacing} />

@@ -15,10 +15,9 @@ export function useRiverFlow(stationId) {
         setError(null)
 
         try {
-            const [obs, fcast, trend] = await Promise.allSettled([
+            const [obs, fcast] = await Promise.allSettled([
                 fetch(`${BASE_URL}/${stationId}/stageflow/observed`).then(r => r.json()),
                 fetch(`${BASE_URL}/${stationId}/stageflow/forecast`).then(r => r.json()),
-                fetch(`${BASE_URL}/${stationId}/stageflow/trend`).then(r => r.json()),
             ])
 
             const threshHold = Date.now() - (7 * 24 * 60 * 60 * 1000)
@@ -32,8 +31,8 @@ export function useRiverFlow(stationId) {
                 ? (fcast.value?.data ?? []).map(p => ({ ...p, isForecast: true }))
                 : []
 
-            setForecast(forecastPoints)
-            setObserved(observedPoints)
+            setForecast(fcast.value)
+            setObserved(obs.value)
             setData([...observedPoints, ...forecastPoints])
         } catch (e) {
             setError(e.message)

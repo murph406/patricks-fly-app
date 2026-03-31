@@ -3,10 +3,14 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import { getCenter, getBounds } from 'geolib'
 
-import ReactMapView from 'react-native-maps'
+import ReactMapView, { UrlTile } from 'react-native-maps'
 
 import { EventEmitter, GeoPoint } from 'src/utils/Structures'
 import useStyles from '@hooks/useStyles'
+
+// const URL_TEMPLATE = "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}"
+const URL_TEMPLATE = "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
+
 
 const MapView = React.forwardRef(function MapView({ children, options = {} }, ref) {
   const emitterRef = React.useRef(new EventEmitter())
@@ -82,6 +86,13 @@ const MapView = React.forwardRef(function MapView({ children, options = {} }, re
       pitchEnabled={options?.pitchEnabled}
       showsUserLocation={options?.showsUserLocation}
       region={options?.region}>
+      <UrlTile
+        urlTemplate={URL_TEMPLATE}
+        maximumZ={19}
+        flipY={false}
+        shouldReplaceMapContent={true}
+        tileSize={256}
+      />
       {children}
     </ReactMapView>
   )

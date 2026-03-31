@@ -6,8 +6,8 @@ import { format } from 'date-fns'
 import { CartesianChart, Line, Area, useChartPressState, } from 'victory-native'
 import { Text as SkiaText, Line as SkiaLine, useFont, Circle as SkiaCircle, vec } from '@shopify/react-native-skia'
 
-import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
+import EmptyState from '@components/composites/EmptyState'
 
 const APPROX_LABEL_WIDTH = 70
 const APPROX_LABEL_HEIGHT = 20
@@ -37,6 +37,12 @@ const RiverFlowChart = (props) => {
   const chartLeft = useSharedValue(0)
   const chartRight = useSharedValue(0)
   const activeFlow = useDerivedValue(() => `${Math.round(state.y.flow.value.value * 1000).toLocaleString()} CFS`)
+  const todayLabelX = useDerivedValue(() => todayX.value - 17)
+  const todayLabelY = useDerivedValue(() => chartTop.value + 10)
+  const p1Today = useDerivedValue(() => vec(todayX.value, chartTop.value + 22))
+  const p2Today = useDerivedValue(() => vec(todayX.value, chartBottom.value))
+  const p1Current = useDerivedValue(() => vec(state.x.position.value, chartTop.value))
+  const p2Current = useDerivedValue(() => vec(state.x.position.value, chartBottom.value))
   const labelX = useDerivedValue(() => {
     const x = state.x.position.value - APPROX_LABEL_WIDTH / 2
     const minX = chartLeft.value + 4
@@ -49,132 +55,129 @@ const RiverFlowChart = (props) => {
     const maxY = chartBottom.value - 4
     return Math.max(minY, Math.min(y, maxY))
   })
-  const todayLabel = 'Today'
-  const todayLabelX = useDerivedValue(() => todayX.value - 17)
-  const todayLabelY = useDerivedValue(() => chartTop.value + 10)
-  const p1Today = useDerivedValue(() => vec(todayX.value, chartTop.value + 22))
-  const p2Today = useDerivedValue(() => vec(todayX.value, chartBottom.value))
-  const p1Current = useDerivedValue(() => vec(state.x.position.value, chartTop.value))
-  const p2Current = useDerivedValue(() => vec(state.x.position.value, chartBottom.value))
-
-  if (loading) return (
-    <View style={s.centered}>
-      <ActivityIndicator />
-    </View>
-  )
-
-  if (error || !chartData.length) return (
-    <View style={s.centered}>
-      <Text>No flow data available</Text>
-    </View>
-  )
 
   return (
-    <View style={s.container}>
-      <CartesianChart
-        xKey="x"
-        yKeys={["flow"]}
-        data={chartData}
-        chartPressState={state}
-        axisOptions={{
-          font: fontLabel,
-          tickCount: { x: 6, y: 6 },
-          labelColor: s.text,
-          lineColor: s.surface4,
-          labelOffset: { x: 6, y: 6 },
-          formatXLabel: (ms) => format(new Date(ms), 'MM/dd'),
-          formatYLabel: (val) => `${(val * 1000).toFixed(0)}`,
-        }}>
+    <React.Fragment>
+      {!loading && (!error || chartData.length !== 0) && (
+        <View style={s.container}>
+          <CartesianChart
+            xKey="x"
+            yKeys={["flow"]}
+            data={chartData}
+            chartPressState={state}
+            axisOptions={{
+              font: fontLabel,
+              tickCount: { x: 6, y: 6 },
+              labelColor: s.text,
+              lineColor: s.surface4,
+              labelOffset: { x: 6, y: 6 },
+              formatXLabel: (ms) => format(new Date(ms), 'MM/dd'),
+              formatYLabel: (val) => `${(val * 1000).toFixed(0)}`,
+            }}>
 
-        {({ points, chartBounds }) => {
-          chartTop.value = chartBounds.top
-          chartBottom.value = chartBounds.bottom
-          chartLeft.value = chartBounds.left
-          chartRight.value = chartBounds.right
+            {({ points, chartBounds }) => {
+              chartTop.value = chartBounds.top
+              chartBottom.value = chartBounds.bottom
+              chartLeft.value = chartBounds.left
+              chartRight.value = chartBounds.right
 
-          const cutoff = observedData.length
-          const observedPoints = points.flow.slice(0, cutoff)
-          const forecastPoints = points.flow.slice(cutoff)
-          const todayPoint = points.flow[cutoff]
-          if (todayPoint?.x != null) todayX.value = todayPoint.x
+              const cutoff = observedData.length
+              const observedPoints = points.flow.slice(0, cutoff)
+              const forecastPoints = points.flow.slice(cutoff)
+              const todayPoint = points.flow[cutoff]
+              if (todayPoint?.x != null) todayX.value = todayPoint.x
 
-          return (
-            <React.Fragment>
-
-              <Area
-                points={observedPoints}
-                y0={chartBounds.bottom}
-                color={s.surface1}
-                animate={{ type: 'timing', duration: 400 }}
-              />
-              <Line
-                points={observedPoints}
-                color={s.surface3}
-                strokeWidth={2}
-                animate={{ type: 'timing', duration: 400 }}
-              />
-
-              <Area
-                points={forecastPoints}
-                y0={chartBounds.bottom}
-                color={s.blueSurface1}
-                animate={{ type: 'timing', duration: 400 }}
-              />
-
-              <Line
-                points={forecastPoints}
-                color={s.blueSurface3}
-                strokeWidth={2}
-                strokeDashArray={[4, 4]}
-                animate={{ type: 'timing', duration: 400 }}
-              />
-
-              <SkiaLine
-                p1={p1Today}
-                p2={p2Today}
-                color={s.text3}
-                strokeWidth={1}
-              />
-
-              <SkiaText
-                text={todayLabel}
-                font={fontLabel}
-                color={s.text}
-                x={todayLabelX}
-                y={todayLabelY}
-              />
-
-              {isActive && (
+              return (
                 <React.Fragment>
-                  <SkiaLine
-                    p1={p1Current}
-                    p2={p2Current}
-                    color={s.blueSurface3}
-                    strokeWidth={1}
-                    style="stroke"
+
+                  <Area
+                    points={observedPoints}
+                    y0={chartBounds.bottom}
+                    color={s.surface1}
+                    animate={{ type: 'timing', duration: 400 }}
+                  />
+                  <Line
+                    points={observedPoints}
+                    color={s.surface3}
+                    strokeWidth={2}
+                    animate={{ type: 'timing', duration: 400 }}
                   />
 
-                  <SkiaCircle
-                    r={6}
-                    cx={state.x.position}
-                    cy={state.y.flow.position}
+                  <Area
+                    points={forecastPoints}
+                    y0={chartBounds.bottom}
+                    color={s.blueSurface1}
+                    animate={{ type: 'timing', duration: 400 }}
+                  />
+
+                  <Line
+                    points={forecastPoints}
                     color={s.blueSurface3}
+                    strokeWidth={2}
+                    strokeDashArray={[4, 4]}
+                    animate={{ type: 'timing', duration: 400 }}
+                  />
+
+                  <SkiaLine
+                    p1={p1Today}
+                    p2={p2Today}
+                    color={s.text3}
+                    strokeWidth={1}
                   />
 
                   <SkiaText
-                    text={activeFlow}
-                    font={fontLg}
+                    text='Today'
+                    font={fontLabel}
                     color={s.text}
-                    x={labelX}
-                    y={labelY}
+                    x={todayLabelX}
+                    y={todayLabelY}
                   />
+
+                  {isActive && (
+                    <React.Fragment>
+                      <SkiaLine
+                        p1={p1Current}
+                        p2={p2Current}
+                        color={s.blueSurface3}
+                        strokeWidth={1}
+                        style="stroke"
+                      />
+
+                      <SkiaCircle
+                        r={6}
+                        cx={state.x.position}
+                        cy={state.y.flow.position}
+                        color={s.blueSurface3}
+                      />
+
+                      <SkiaText
+                        text={activeFlow}
+                        font={fontLg}
+                        color={s.text}
+                        x={labelX}
+                        y={labelY}
+                      />
+                    </React.Fragment>
+                  )}
                 </React.Fragment>
-              )}
-            </React.Fragment>
-          )
-        }}
-      </CartesianChart>
-    </View>
+              )
+            }}
+          </CartesianChart>
+        </View>
+      )}
+
+      {loading && (!error || chartData.length !== 0) && (
+        <View style={s.centered}>
+          <ActivityIndicator />
+        </View>
+      )}
+
+      {!loading && (error || chartData.length == 0) && (
+        <View style={s.centered}>
+          <EmptyState text='No flow data available' />
+        </View>
+      )}
+    </React.Fragment>
   )
 }
 
@@ -188,7 +191,7 @@ const createStyles = (theme) => {
       paddingLeft: vars.unit
     },
     centered: {
-      height: 200,
+      height: vars.unit * 25,
       alignItems: 'center',
       justifyContent: 'center',
     },

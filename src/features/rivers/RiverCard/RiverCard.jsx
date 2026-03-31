@@ -2,9 +2,9 @@ import Text from '@components/elements/Text'
 import useAnimation from '@hooks/useAnimation'
 import useStyles from '@hooks/useStyles'
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
+import { StyleSheet, TouchableOpacity, Image as RNImage, Animated } from 'react-native'
 
-const RiverCard = ({ name, state, onPress }) => {
+const RiverCard = ({ name, state, image, onPress }) => {
   const [pressed, setPressed] = React.useState(false)
   const togglePressed = () => setPressed((prev) => !prev)
   const s = useStyles(createStyles)
@@ -30,8 +30,11 @@ const RiverCard = ({ name, state, onPress }) => {
         onPressIn={togglePressed}
         onPressOut={togglePressed}
         style={s.container}>
-        <View style={s.cardContainer}>
-        </View>
+
+        <RNImage
+          source={image}
+          style={s.logoContainer}
+        />
 
         <Text numberOfLines={2} style={s.text}>{name}</Text>
         <Text color='text2' numberOfLines={2} style={s.text}>{state}</Text>
@@ -46,15 +49,16 @@ const createStyles = (theme, dimensions) => {
 
   return StyleSheet.create({
     container: {
-      width: ((dimensions.width - vars.unit * 3) / 2.5),
     },
-    cardContainer: {
-      backgroundColor: isDarkMode ? colors.light.surface4 : colors.light.surface3,
+    logoContainer: {
+      borderRadius: vars.unit,
       height: vars.unit * 10,
       borderRadius: vars.unit * .75,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginBottom: vars.unit,
+      aspectRatio: 1.35,
+      overflow: 'hidden',
+      resizeMode: 'cover',
+      backgroundColor: isDarkMode ? colors.light.surface : colors.light.surface3,
+      marginBottom: vars.half
     },
     text: {
       textAlign: 'center'

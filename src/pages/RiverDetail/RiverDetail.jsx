@@ -15,7 +15,7 @@ const RiverDetail = ({ route }) => {
   const navigatePage = useNavigatePage(createStyles)
   const s = useStyles(createStyles)
 
-  const { name = '', state = '', description = '', lat, lng, stations = [] } = route.params
+  const { name = '', state = '', description = '', image, subImage, lat, lng, stations = [] } = route.params
 
   return (
     <React.Fragment>
@@ -23,6 +23,7 @@ const RiverDetail = ({ route }) => {
 
       <ImageView
         maxHeight={175}
+        backgroundImage={subImage}
         onPressBack={navigatePage()}
         ref={containerRef}>
         <React.Fragment>
@@ -30,6 +31,7 @@ const RiverDetail = ({ route }) => {
 
             <View style={s.headerWrapper}>
               <RNImage
+                source={image}
                 style={s.logoContainer}
               />
 
@@ -73,9 +75,8 @@ const createStyles = (theme) => {
       height: profileImageHeight,
       aspectRatio: 1.35,
       overflow: 'hidden',
-      resizeMode: 'contain',
+      resizeMode: 'cover',
       backgroundColor: isDarkMode ? colors.light.surface : colors.light.surface3,
-      padding: vars.unit,
       marginLeft: vars.unit,
     },
     headerWrapper: {

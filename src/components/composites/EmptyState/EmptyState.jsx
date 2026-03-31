@@ -60,7 +60,10 @@ const createStyles = (theme) => {
     },
     filled: {
       flex: 1,
+      justifyContent: 'center', 
+      alignItems: 'center',
       width: '100%',
+      minHeight: vars.unit * 12.5
     },
     icon: {
       height: icon,

@@ -14,6 +14,7 @@ const ImageView = React.forwardRef(function ImageView(props, ref) {
     maxHeight = 103,
     allowLandscape = false,
     tintColor,
+    backgroundImage = BackSplashImage,
     onPressBack,
     children,
     text
@@ -55,7 +56,7 @@ const ImageView = React.forwardRef(function ImageView(props, ref) {
     <View style={s.container}>
       <Animated.View style={[s.header, { transform: [{ scale: headerScale }] }]}>
         <Image
-          source={BackSplashImage}
+          source={backgroundImage}
           style={[s.image, { height: maxHeight }]} />
         <Animated.View style={[s.overlay, { opacity: headerOverlayOpacity }]} />
       </Animated.View>

@@ -31,10 +31,9 @@ const StationCard = ({ label, id, onPress }) => {
         onPressOut={togglePressed}
         style={s.container}>
         <View style={s.cardContainer}>
+          <Text  numberOfLines={1} style={s.text}>{id}</Text>
+          <Text color='text2' numberOfLines={2} style={s.text}>{label}</Text>
         </View>
-
-        <Text numberOfLines={2} style={s.text}>{label}</Text>
-        <Text color='text2' numberOfLines={2} style={s.text}>{id}</Text>
       </TouchableOpacity>
     </Animated.View>
   )
@@ -47,14 +46,16 @@ const createStyles = (theme, dimensions) => {
   return StyleSheet.create({
     container: {
       width: ((dimensions.width - vars.unit * 3) / 2.5),
+      marginBottom: vars.half,
     },
     cardContainer: {
-      backgroundColor: isDarkMode ? colors.light.surface4 : colors.light.surface3,
+      backgroundColor: isDarkMode ? colors.surface4 : colors.surface4,
       height: vars.unit * 10,
+      padding: vars.unit * .35,
+      gap: vars.half,
       borderRadius: vars.unit * .75,
       alignItems: 'center',
       justifyContent: 'center',
-      marginBottom: vars.unit,
     },
     text: {
       textAlign: 'center'

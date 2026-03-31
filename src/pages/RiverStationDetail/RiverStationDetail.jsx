@@ -1,11 +1,12 @@
+import React from 'react'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import { format, parseISO } from 'date-fns'
 
 import DraggableDrawer from '@components/composites/DraggableDrawer'
 import Divider from '@components/elements/Divider'
 import MapView from '@components/layouts/MapView'
 import StatusBar from '@components/layouts/StatusBar'
 import useStyles from '@hooks/useStyles'
-import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
 import BackIcon from '@assets/icons/back.svg'
 import useNavigatePage from '@hooks/useNavigatePage'
 import IconButton from '@components/elements/IconButton'
@@ -20,7 +21,6 @@ const RiverStationDetail = ({ route }) => {
   const {
     type = '',
     label,
-    riverName,
     id,
     lat,
     lng,
@@ -32,8 +32,12 @@ const RiverStationDetail = ({ route }) => {
   const navigatePage = useNavigatePage()
   const defaultCoordinate = React.useRef(new GeoPoint(lat, lng))
   const [selectedCoordinate, setSelectedCoordinate] = React.useState(null)
-
   const riverFlow = useRiverFlow(id)
+
+  const lastObserved = React.useMemo(() => {
+    if (riverFlow?.observed?.issuedTime) return format(parseISO(riverFlow.observed.issuedTime), 'MMM d, yyyy h:mm a')
+    return null
+  }, [riverFlow])
 
   React.useEffect(() => {
     if (selectedCoordinate) mapRef.current.navigateToCoordinates?.([selectedCoordinate], s.maxDrawerHeight + 100)
@@ -85,7 +89,7 @@ const RiverStationDetail = ({ route }) => {
           <View style={s.drawerHeader}>
             <DrawerHeader
               headline={`${label} Station`}
-              description={riverName}
+              description={lastObserved && `Latest Observation - ${lastObserved}`}
             />
 
             <Divider />
@@ -142,7 +146,7 @@ const createStyles = (theme, dimensions) => {
       gap: vars.half
     },
     minDrawerHeight: height * .15,
-    maxDrawerHeight: height * .45
+    maxDrawerHeight: height * .475
   })
 }
 
