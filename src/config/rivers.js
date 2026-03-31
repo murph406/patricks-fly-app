@@ -14,6 +14,6 @@ export const RIVERS = [
     description: 'A premier catch-and-release trout fishery running through the Yakima Canyon.',
     type: [RIVER_TYPES.tailwater, RIVER_TYPES.freestone],
     fish: [FISH.rainbow_trout, FISH.brown_trout],
-    stations: [STATIONS.EASW1, STATIONS.ELNW1, STATIONS.UMTW1, STATIONS.PARW1, STATIONS.YUNW1],
+    stations: [STATIONS.EASW1, STATIONS.UMTW1, STATIONS.PARW1],
   },
 ]

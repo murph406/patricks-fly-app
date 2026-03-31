@@ -5,6 +5,7 @@ const BASE_URL = 'https://api.water.noaa.gov/nwps/v1/gauges'
 export function useRiverFlow(stationId) {
     const [observed, setObserved] = React.useState(null)
     const [forecast, setForecast] = React.useState(null)
+    const [data, setData] = React.useState(null)
     const [loading, setLoading] = React.useState(true)
     const [error, setError] = React.useState(null)
 
@@ -12,13 +13,28 @@ export function useRiverFlow(stationId) {
         if (!stationId) return
         setLoading(true)
         setError(null)
+
         try {
-            const [obs, fcast] = await Promise.allSettled([
+            const [obs, fcast, trend] = await Promise.allSettled([
                 fetch(`${BASE_URL}/${stationId}/stageflow/observed`).then(r => r.json()),
                 fetch(`${BASE_URL}/${stationId}/stageflow/forecast`).then(r => r.json()),
+                fetch(`${BASE_URL}/${stationId}/stageflow/trend`).then(r => r.json()),
             ])
-            setObserved(obs.status === 'fulfilled' ? obs.value : null)
-            setForecast(fcast.status === 'fulfilled' ? fcast.value : null)
+
+            const threshHold = Date.now() - (7 * 24 * 60 * 60 * 1000)
+            const observedPoints = obs.status === 'fulfilled'
+                ? (obs.value?.data ?? [])
+                    .filter(p => new Date(p.validTime).getTime() >= threshHold)
+                    .map(p => ({ ...p, isForecast: false }))
+                : []
+
+            const forecastPoints = fcast.status === 'fulfilled'
+                ? (fcast.value?.data ?? []).map(p => ({ ...p, isForecast: true }))
+                : []
+
+            setForecast(forecastPoints)
+            setObserved(observedPoints)
+            setData([...observedPoints, ...forecastPoints])
         } catch (e) {
             setError(e.message)
         } finally {
@@ -28,5 +44,5 @@ export function useRiverFlow(stationId) {
 
     React.useEffect(() => { load() }, [load])
 
-    return { observed, forecast, loading, error, refresh: load }
+    return { data, observed, forecast, loading, error, refresh: load }
 }

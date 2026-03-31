@@ -76,11 +76,27 @@ export const ThemeProvider = ({ children }) => {
     }
   }
 
+  function hslToHex(hsl) {
+    const [h, s, l] = hsl.match(/\d+\.?\d*/g).map(Number)
+    const sl = s / 100
+    const ll = l / 100
+
+    const a = sl * Math.min(ll, 1 - ll)
+    const f = n => {
+      const k = (n + h / 30) % 12
+      const color = ll - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)
+      return Math.round(255 * color).toString(16).padStart(2, '0')
+    }
+
+    return `#${f(0)}${f(8)}${f(4)}`
+  }
+
   const value = {
     colors,
     vars: Vars,
     colorScheme,
-    getTeamTheme
+    getTeamTheme,
+    hslToHex
   }
 
   return (

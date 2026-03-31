@@ -14,6 +14,7 @@ import MapPin from '@components/elements/MapPin'
 import DrawerHeader from '@components/composites/DrawerHeader'
 import { GeoPoint } from 'src/utils/Structures'
 import { useRiverFlow } from '@hooks/useRiverFlow'
+import RiverFlowChart from './RiverFlowChart'
 
 const RiverStationDetail = ({ route }) => {
   const {
@@ -32,7 +33,7 @@ const RiverStationDetail = ({ route }) => {
   const defaultCoordinate = React.useRef(new GeoPoint(lat, lng))
   const [selectedCoordinate, setSelectedCoordinate] = React.useState(null)
 
-  const { } = useRiverFlow(id)
+  const riverFlow = useRiverFlow(id)
 
   React.useEffect(() => {
     if (selectedCoordinate) mapRef.current.navigateToCoordinates?.([selectedCoordinate], s.maxDrawerHeight + 100)
@@ -92,7 +93,7 @@ const RiverStationDetail = ({ route }) => {
 
           <ScrollView >
             <View style={s.body}>
-              {/* Graph here but need reusable component made for it */}
+              <RiverFlowChart {...riverFlow} />
             </View>
           </ScrollView>
 
@@ -115,10 +116,10 @@ const createStyles = (theme, dimensions) => {
     drawerContainer: {
       flex: 1,
       paddingTop: vars.unit,
-      paddingHorizontal: vars.unit,
     },
     drawerHeader: {
       gap: vars.unit,
+      paddingHorizontal: vars.unit,
     },
     backContainer: {
       position: 'absolute',
@@ -141,7 +142,7 @@ const createStyles = (theme, dimensions) => {
       gap: vars.half
     },
     minDrawerHeight: height * .15,
-    maxDrawerHeight: height * .5
+    maxDrawerHeight: height * .45
   })
 }
 

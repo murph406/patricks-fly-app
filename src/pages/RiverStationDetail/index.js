@@ -1,1 +1,1 @@
-export { default } from './MapDetail'
+export { default } from './RiverStationDetail'
