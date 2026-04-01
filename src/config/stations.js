@@ -94,5 +94,53 @@ export const STATIONS = {
     riverName: 'Green River',
     lat: 47.3000,
     lng: -121.8500,
-  }
+  },
+  LNDW1: {
+    id: 'LNDW1',
+    label: 'Cedar - Near Landsburg',
+    riverId: 'cedar',
+    riverName: 'Cedar River',
+    lat: 47.4000,
+    lng: -121.9500,
+  },
+  RNTW1: {
+    id: 'RNTW1',
+    label: 'Cedar - At Renton',
+    riverId: 'cedar',
+    riverName: 'Cedar River',
+    lat: 47.4828,
+    lng: -122.2019,
+  },
+  GLBW1: {
+    id: 'GLBW1',
+    label: 'Skykomish - Near Gold Bar',
+    riverId: 'skykomish',
+    riverName: 'Skykomish River',
+    lat: 47.8353,
+    lng: -121.6600,
+  },
+  ARLW1: {
+    id: 'ARLW1',
+    label: 'Stillaguamish - Near Arlington',
+    riverId: 'stillaguamish',
+    riverName: 'Stillaguamish River',
+    lat: 48.2036,
+    lng: -122.1281
+  },
+  ARGW1: {
+    id: 'ARGW1',
+    label: 'NF Stillaguamish - Near Arlington',
+    riverId: 'stillaguamish',
+    riverName: 'Stillaguamish River',
+    lat: 48.2606,
+    lng: -122.0475
+  },
+  SSFW1: {
+    id: 'SSFW1',
+    label: 'SF Stillaguamish - At Jordan Road',
+    riverId: 'stillaguamish',
+    riverName: 'Stillaguamish River',
+    lat: 48.0953,
+    lng: -121.9742
+  },
 }
