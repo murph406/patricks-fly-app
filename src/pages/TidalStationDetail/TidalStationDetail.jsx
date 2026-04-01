@@ -1,56 +1,52 @@
 import React from 'react'
-import { StatusBar, StyleSheet, View, Image as RNImage } from 'react-native'
+import { StatusBar, StyleSheet, View } from 'react-native'
 
 import ImageView from '@components/layouts/ImageView'
 import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
 import useNavigatePage from '@hooks/useNavigatePage'
-import HorizontalList from '@components/composites/HorizontalList'
-import RiverStationCard from 'src/features/rivers/RiverStationCard'
 import MapButtonGroup from '@components/composites/MapButtonGroup'
 import { GeoPoint } from 'src/utils/Structures'
+import Section from '@components/elements/Section'
+import TidalChart from 'src/features/tides/TidalChart'
+import { useTidalFlow } from '@hooks/useTidalFlow'
 
-const RiverDetail = ({ route }) => {
+const TidalStationDetail = ({ route }) => {
   const containerRef = React.useRef(null)
   const navigatePage = useNavigatePage(createStyles)
   const s = useStyles(createStyles)
 
-  const { name = '', state = '', description = '', image, subImage, lat, lng, stations = [] } = route.params
+  const { name = '', howToReach = '', image, lat, lng, id } = route.params
+  const tidalFlow = useTidalFlow(id)
 
   return (
     <React.Fragment>
       <StatusBar barStyle="light-content" />
 
       <ImageView
-        maxHeight={175}
-        backgroundImage={subImage}
+        backgroundImage={image}
+        text={`${name} Station`}
         onPressBack={navigatePage()}
         ref={containerRef}>
         <React.Fragment>
           <View style={s.container}>
 
-            <View style={s.headerWrapper}>
-              <RNImage
-                source={image}
-                style={s.logoContainer}
-              />
-
-              <Text type='title' numberOfLines={1}>{name}, {state}</Text>
-              <Text type='default'>{description}</Text>
-            </View>
+            <Section label='Tidal Chart'>
+              <View style={s.sectionWrapper}>
+                <TidalChart {...tidalFlow} />
+              </View>
+            </Section>
 
             <MapButtonGroup
               label='Location'
               coordinate={new GeoPoint(lat, lng)}
             />
 
-            <HorizontalList
-              label='Stations'
-              data={stations}
-              renderItem={({ item }) => (
-                <RiverStationCard {...item} key={item?.Id} onPress={navigatePage('river-station-detail', item)} />
-              )}
-            />
+            <Section label='How to Reach'>
+              <View style={s.sectionWrapper}>
+                <Text>{howToReach}</Text>
+              </View>
+            </Section>
 
           </View>
         </React.Fragment>
@@ -68,7 +64,8 @@ const createStyles = (theme) => {
     container: {
       flex: 1,
       gap: vars.double,
-      marginTop: -(profileImageHeight * .5),
+      paddingTop: vars.double,
+      paddingBottom: vars.unit * 4,
     },
     logoContainer: {
       borderRadius: vars.unit,
@@ -79,7 +76,7 @@ const createStyles = (theme) => {
       backgroundColor: isDarkMode ? colors.light.surface : colors.light.surface3,
       marginLeft: vars.unit,
     },
-    headerWrapper: {
+    sectionWrapper: {
       gap: vars.unit,
       paddingLeft: vars.unit,
       paddingRight: vars.unit,
@@ -88,4 +85,4 @@ const createStyles = (theme) => {
 }
 
 
-export default RiverDetail
+export default TidalStationDetail

@@ -20,6 +20,7 @@ import Webview from '@pages/Webview'
 import Settings from '@pages/Settings'
 import RiverDetail from '@pages/RiverDetail'
 import RiverStationDetail from '@pages/RiverStationDetail'
+import TidalStationDetail from '@pages/TidalStationDetail'
 
 const MyTabNavigator = createNavigatorFactory(TabNavigator)
 
@@ -77,6 +78,7 @@ export default function Router() {
           <Stack.Group screenOptions={{ headerShown: false, animation: 'simple_push' }}>
             <Stack.Screen name="main" component={MainTabNavigator} options={{ animation: 'fade' }} />
             <Stack.Screen name="river-detail" component={RiverDetail} />
+            <Stack.Screen name="tidal-station-detail" component={TidalStationDetail} />
             <Stack.Screen name="river-station-detail" component={RiverStationDetail} />
             <Stack.Screen name="webview" component={Webview} />
             <Stack.Screen name="settings" component={Settings} />

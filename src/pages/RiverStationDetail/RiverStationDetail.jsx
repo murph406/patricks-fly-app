@@ -13,9 +13,9 @@ import IconButton from '@components/elements/IconButton'
 import Constants from "expo-constants"
 import MapPin from '@components/elements/MapPin'
 import DrawerHeader from '@components/composites/DrawerHeader'
-import { GeoPoint } from 'src/utils/Structures'
+import { GeoPoint } from '@utils/Structures'
 import { useRiverFlow } from '@hooks/useRiverFlow'
-import RiverFlowChart from './RiverFlowChart'
+import RiverFlowChart from '@features/rivers/RiverFlowChart'
 
 const RiverStationDetail = ({ route }) => {
   const {

@@ -4,7 +4,7 @@ import useStyles from '@hooks/useStyles'
 import React from 'react'
 import { StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
 
-const StationCard = ({ label, id, onPress }) => {
+const RiverStationCard = ({ label, id, onPress }) => {
   const [pressed, setPressed] = React.useState(false)
   const togglePressed = () => setPressed((prev) => !prev)
   const s = useStyles(createStyles)
@@ -64,4 +64,4 @@ const createStyles = (theme, dimensions) => {
 }
 
 
-export default StationCard
+export default RiverStationCard

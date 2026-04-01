@@ -13,6 +13,8 @@ import { RIVERS } from 'src/config/rivers'
 import useNavigatePage from '@hooks/useNavigatePage'
 import EmptyState from '@components/composites/EmptyState'
 import MapButtonGroup from '@components/composites/MapButtonGroup'
+import { TIDAL_STATIONS } from 'src/config/tidalStations'
+import TidalStationCard from 'src/features/tides/TidalStationCard'
 
 const Home = () => {
   const s = useStyles(createStyles)
@@ -26,7 +28,7 @@ const Home = () => {
 
           <HorizontalList
             label='My Places'
-            listEmptyComponent={<EmptyState fill text='Coming Soon'/>}
+            listEmptyComponent={<EmptyState fill text='Coming Soon' />}
           />
 
           <MapButtonGroup
@@ -38,6 +40,7 @@ const Home = () => {
           <HorizontalList
             label='Rivers'
             data={RIVERS}
+            listEmptyComponent={<EmptyState fill />}
             renderItem={({ item }) => (
               <RiverCard {...item} key={item?.Id} onPress={navigatePage('river-detail', item)} />
             )}
@@ -45,7 +48,11 @@ const Home = () => {
 
           <HorizontalList
             label='Tidal Stations'
+            data={TIDAL_STATIONS}
             listEmptyComponent={<EmptyState fill />}
+            renderItem={({ item }) => (
+              <TidalStationCard {...item} key={item?.Id} onPress={navigatePage('tidal-station-detail', item)} />
+            )}
           />
 
           <View style={s.spacing} />

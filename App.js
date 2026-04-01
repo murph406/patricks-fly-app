@@ -1,4 +1,3 @@
-// import 'react-native-reanimated'
 import Router from '@router'
 
 import { LayoutProvider } from './src/stores/LayoutContext'
