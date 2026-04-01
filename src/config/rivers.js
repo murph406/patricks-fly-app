@@ -2,6 +2,8 @@ import { FISH } from './fish'
 import { RIVER_TYPES } from './riverTypes'
 import { STATIONS } from './stations'
 
+// https://www.nwrfc.noaa.gov/rfc/
+
 export const RIVERS = [
   {
     id: 'yakima',
@@ -28,5 +30,57 @@ export const RIVERS = [
     type: [],
     fish: [],
     stations: [STATIONS.CONW1, STATIONS.MVEW1, STATIONS.SRMW1, STATIONS.GORW1],
+  },
+  {
+    id: 'green',
+    name: 'Green River',
+    state: 'WA',
+    lat: 47.3128,
+    lng: -122.2036,
+    image: require('@assets/images/green-detail.png'),
+    subImage: require('@assets/images/green-background.png'),
+    description: 'The Green flows out of Howard Hanson Dam through the foothills southeast of Seattle before winding into the lowlands of King County.',
+    type: [],
+    fish: [],
+    stations: [STATIONS.GORW1, STATIONS.AUBW1, STATIONS.GPUW1],
+  },
+  {
+    id: 'cedar',
+    name: 'Cedar River',
+    state: 'WA',
+    lat: 47.5007,
+    lng: -122.2162,
+    image: require('@assets/images/cedar-detail.png'),
+    subImage: require('@assets/images/cedar-background.png'),
+    description: 'The Cedar drains the Cascade foothills southeast of Seattle, flowing through Renton before emptying into Lake Washington.',
+    type: [],
+    fish: [],
+    stations: [],
+  },
+  {
+    id: 'skykomish',
+    name: 'Skykomish River',
+    state: 'WA',
+    lat: 47.8370,
+    lng: -121.6670,
+    image: require('@assets/images/skykomish-detail.png'),
+    subImage: require('@assets/images/skykomish-background.png'),
+    description: 'The Skykomish drains the western slopes of the Cascades through the towns of Index and Sultan before joining the Snoqualmie to form the Snohomish River near Monroe.',
+    type: [],
+    fish: [],
+    stations: [],
+  },
+  {
+    id: 'stillaguamish',
+    name: 'Stillaguamish River',
+    state: 'WA',
+    lat: 48.1400,
+    lng: -122.2200,
+    image: require('@assets/images/stillaguamish-detail.png'),
+    subImage: require('@assets/images/stillaguamish-background.png'),
+    description: 'The Stillaguamish flows out of the Cascades through Arlington and Stanwood before reaching Port Susan Bay on Puget Sound.',
+    type: [],
+    fish: [],
+    stations: [],
   },
 ]

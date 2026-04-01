@@ -70,5 +70,29 @@ export const STATIONS = {
     riverName: 'Skagit River Basin',
     lat: 48.6667,
     lng: -121.2500,
+  },
+  GORW1: {
+    id: 'GORW1',
+    label: 'Green - Below Howard Hanson Dam',
+    riverId: 'green',
+    riverName: 'Green River',
+    lat: 47.2836,
+    lng: -121.7967,
+  },
+  AUBW1: {
+    id: 'AUBW1',
+    label: 'Green - Near Auburn',
+    riverId: 'green',
+    riverName: 'Green River',
+    lat: 47.3128,
+    lng: -122.2036,
+  },
+  GPUW1: {
+    id: 'GPUW1',
+    label: 'Green - Near Palmer',
+    riverId: 'green',
+    riverName: 'Green River',
+    lat: 47.3000,
+    lng: -121.8500,
   }
 }
