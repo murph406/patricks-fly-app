@@ -26,7 +26,7 @@ const Home = () => {
 
           <HorizontalList
             label='My Places'
-            listEmptyComponent={<EmptyState fill />}
+            listEmptyComponent={<EmptyState fill text='Coming Soon'/>}
           />
 
           <MapButtonGroup
