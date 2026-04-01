@@ -41,8 +41,8 @@ const Home = () => {
             label='Rivers'
             data={RIVERS}
             listEmptyComponent={<EmptyState fill />}
-            renderItem={({ item }) => (
-              <RiverCard {...item} key={item?.Id} onPress={navigatePage('river-detail', item)} />
+            renderItem={({ item, index }) => (
+              <RiverCard {...item} key={`${item?.id}-${index}`} onPress={navigatePage('river-detail', item)} />
             )}
           />
 
@@ -50,8 +50,8 @@ const Home = () => {
             label='Tidal Stations'
             data={TIDAL_STATIONS}
             listEmptyComponent={<EmptyState fill />}
-            renderItem={({ item }) => (
-              <TidalStationCard {...item} key={item?.Id} onPress={navigatePage('tidal-station-detail', item)} />
+            renderItem={({ item, index }) => (
+              <TidalStationCard {...item} key={`${item?.id}-${index}`} onPress={navigatePage('tidal-station-detail', item)} />
             )}
           />
 

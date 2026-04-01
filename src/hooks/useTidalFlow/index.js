@@ -22,8 +22,17 @@ export function useTidalFlow(stationId) {
             setLoading(true)
             setError(null)
 
-            const res = await fetch(buildUrl(stationId))
-            const json = await res.json()
+            const begin = format(subDays(new Date(), 1), 'yyyyMMdd')
+            const end = format(addDays(new Date(), 7), 'yyyyMMdd')
+            const base = `${BASE_URL}?station=${stationId}&product=predictions&datum=MLLW&time_zone=lst_ldt&units=english&application=web_services&format=json&begin_date=${begin}&end_date=${end}`
+
+            let res = await fetch(`${base}&interval=6`)
+            let json = await res.json()
+
+            if (json.error) {
+                res = await fetch(`${base}&interval=hilo`)
+                json = await res.json()
+            }
 
             if (json.error) throw new Error(json.error.message)
 
@@ -36,9 +45,10 @@ export function useTidalFlow(stationId) {
                     isForecast: x > now,
                 }
             })
-
+            debugger
             setData(predictions)
         } catch (e) {
+            debugger
             setError(e.message)
         } finally {
             setLoading(false)
