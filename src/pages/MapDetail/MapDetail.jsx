@@ -3,7 +3,7 @@ import Divider from '@components/elements/Divider'
 import MapView from '@components/layouts/MapView'
 import StatusBar from '@components/layouts/StatusBar'
 import useStyles from '@hooks/useStyles'
-import DrawerHeader from '@pages/Map/DrawerHeader'
+import DrawerHeader from '@components/composites/DrawerHeader'
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { spokaneLatLng } from 'src/utils/Vars'
@@ -18,18 +18,18 @@ const MapDetail = (props) => {
   const {
     type = '',
     headlineText = 'Map Detail',
-    subHeader = 'Map subheader',
+    subHeader = null,
     body = 'Something here',
-    coordinate = spokaneLatLng
+    coordinate = spokaneLatLng,
+    maxDrawerHeight = null
   } = props.route.params
 
   const mapRef = React.useRef(null)
   const drawerRef = React.useRef(null)
   const [selectedCoordinate, setSelectedCoordinate] = React.useState(null)
-  const s = useStyles(createStyles)
+  const s = useStyles(createStyles, { maxDrawerHeight })
 
   const navigatePage = useNavigatePage()
-
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -38,7 +38,7 @@ const MapDetail = (props) => {
   }, [coordinate])
 
   React.useEffect(() => {
-    if (selectedCoordinate) mapRef.current.navigateToCoordinates?.([selectedCoordinate], 100)
+    if (selectedCoordinate) mapRef.current.navigateToCoordinates?.([selectedCoordinate], maxDrawerHeight || 120)
   }, [selectedCoordinate])
 
   return (
@@ -65,7 +65,6 @@ const MapDetail = (props) => {
 
       <DraggableDrawer
         ref={drawerRef}
-        initialOpen={false}
         headerPanHandlersEnabled={false}
         maxHeight={s.maxDrawerHeight}
         minHeight={s.minDrawerHeight}>
@@ -73,7 +72,7 @@ const MapDetail = (props) => {
           <View style={s.drawerHeader}>
             <DrawerHeader
               headline={headlineText}
-              description={body}
+              description={subHeader}
             />
 
             <Divider />
@@ -82,10 +81,6 @@ const MapDetail = (props) => {
           <ScrollView >
             <View style={s.body}>
               <View style={s.textWrapper}>
-                <Text>
-                  <Text type='subtitle'>{subHeader}</Text>
-                  <Text> </Text>
-                </Text>
                 <Text type='default' color='text2'>{body}</Text>
               </View>
             </View>
@@ -98,10 +93,12 @@ const MapDetail = (props) => {
 }
 
 
-const createStyles = (theme, dimensions) => {
+const createStyles = (theme, dimensions, props) => {
   const { width, height } = dimensions
+  const { maxDrawerHeight: defaultMaxDrawerHeight } = props
   const { vars, colors } = theme
   const isLandscape = width > height
+  let maxDrawerHeight = defaultMaxDrawerHeight || height * .175
 
   return StyleSheet.create({
     container: {
@@ -130,13 +127,13 @@ const createStyles = (theme, dimensions) => {
       flex: 1,
       gap: vars.unit,
       paddingTop: vars.unit,
-      paddingBottom: vars.unit,
+      paddingBottom: vars.double * 2,
     },
     textWrapper: {
       gap: vars.half
     },
-    minDrawerHeight: height * .15,
-    maxDrawerHeight: height * .35
+    minDrawerHeight: 0,
+    maxDrawerHeight
   })
 }
 

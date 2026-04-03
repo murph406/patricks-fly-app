@@ -12,7 +12,7 @@ import { GeoPoint } from 'src/utils/Structures'
 
 const RiverDetail = ({ route }) => {
   const containerRef = React.useRef(null)
-  const navigatePage = useNavigatePage(createStyles)
+  const navigatePage = useNavigatePage()
   const s = useStyles(createStyles)
 
   const { name = '', state = '', description = '', image, subImage, lat, lng, stations = [] } = route.params
@@ -42,6 +42,13 @@ const RiverDetail = ({ route }) => {
             <MapButtonGroup
               label='Location'
               coordinate={new GeoPoint(lat, lng)}
+              onPress={navigatePage('map-detail', {
+                type: 'river',
+                headlineText: `${name}`,
+                subHeader: state,
+                body: description,
+                coordinate: new GeoPoint(lat, lng)
+              })}
             />
 
             <HorizontalList

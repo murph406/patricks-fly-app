@@ -40,6 +40,14 @@ const TidalStationDetail = ({ route }) => {
             <MapButtonGroup
               label='Location'
               coordinate={new GeoPoint(lat, lng)}
+              onPress={navigatePage('map-detail', {
+                type: 'station',
+                headlineText: `${name}`,
+                body: howToReach,
+                subHeader: 'Tidal Station',
+                coordinate: new GeoPoint(lat, lng),
+                maxDrawerHeight: s.overrideMaxDrawerHeight
+              })}
             />
 
             <Section label='How to Reach'>
@@ -55,8 +63,9 @@ const TidalStationDetail = ({ route }) => {
   )
 }
 
-const createStyles = (theme) => {
+const createStyles = (theme, dimensions) => {
   const { vars, colors, colorScheme } = theme
+  const { height } = dimensions
   const isDarkMode = colorScheme === 'dark'
   const profileImageHeight = vars.unit * 11
 
@@ -80,7 +89,8 @@ const createStyles = (theme) => {
       gap: vars.unit,
       paddingLeft: vars.unit,
       paddingRight: vars.unit,
-    }
+    }, 
+    overrideMaxDrawerHeight: height * .35
   })
 }
 

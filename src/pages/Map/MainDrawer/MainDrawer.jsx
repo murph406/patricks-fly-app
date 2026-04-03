@@ -8,11 +8,14 @@ import SearchBar from '@components/elements/SearchBar'
 import { useMapContext } from '@pages/Map/MapContext'
 import React from 'react'
 import Text from '@components/elements/Text'
+import TabPicker from '@components/composites/TabPicker'
 
 
 const MainDrawer = () => {
     const s = useStyles(createStyles)
     const { search, mainDrawerRef } = useMapContext()
+    const [activeTab, setActiveTab] = React.useState(0)
+
 
     React.useEffect(() => {
         search.ref.current.on('focus', (flag) => {
@@ -42,6 +45,12 @@ const MainDrawer = () => {
                             onChange={search.set}
                         />
                     </View>
+
+                    <TabPicker
+                        tabs={['All', 'My Places', 'River Stations', 'Tidal Stations']}
+                        activeIndex={activeTab}
+                        onChange={setActiveTab}
+                    />
                 </React.Fragment>
             }>
 
@@ -59,16 +68,15 @@ const createStyles = (theme, dimensions) => {
     return StyleSheet.create({
         searchWrapper: {
             paddingTop: vars.unit,
-            paddingBottom: vars.unit + 2,
             paddingHorizontal: vars.unit,
             flex: 0,
         },
         container: {
-            flex: 1, 
-            justifyContent: 'center', 
+            flex: 1,
+            justifyContent: 'center',
             alignItems: 'center'
         },
-        minDrawerHeight: vars.unit * 6,
+        minDrawerHeight: vars.unit * 5.5,
         maxDrawerHeight: height * .675
     })
 }

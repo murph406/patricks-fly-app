@@ -11,12 +11,12 @@ const defaults = {
   },
   ios: {
     infoPlist: {
-      NSLocationWhenInUseUsageDescription: "This app uses your location to show your proximity to your courts.",
-      NSLocationAlwaysUsageDescription: "This app uses your location to show your proximity to your courts.",
-      NSLocationUsageDescription: "This app uses your location to show your proximity to your courts.",
-      NSCameraUsageDescription: "We need to access your camera so you can take a picture of your team.",
-      NSPhotoLibraryUsageDescription: "We need access so you can choose a team picture from your camera roll.",
-      NSPhotoLibraryAddUsageDescription: "We need access so you can choose a team picture from your camera roll."
+      NSLocationWhenInUseUsageDescription: "This app uses your location to show nearby rivers and tidal stations.",
+      NSLocationAlwaysUsageDescription: "This app uses your location to show nearby rivers and tidal stations.",
+      NSLocationUsageDescription: "This app uses your location to show nearby rivers and tidal stations.",
+      NSCameraUsageDescription: "We need camera access so you can add photos to your catches.",
+      NSPhotoLibraryUsageDescription: "We need photo library access so you can add photos to your catches.",
+      NSPhotoLibraryAddUsageDescription: "We need photo library access so you can save photos from the app.",
     },
   },
   android: {
@@ -32,9 +32,9 @@ const defaults = {
   expo: {
     plugins: [
       [
-        "react-native-maps", 
-         "expo-font", 
-         "expo-asset"
+        "react-native-maps",
+        "expo-font",
+        "expo-asset"
       ]
     ]
   }

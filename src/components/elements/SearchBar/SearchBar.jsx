@@ -8,7 +8,7 @@ import CloseIcon from '@assets/icons/close.svg'
 import { EventEmitter } from 'src/utils/Structures'
 
 const SearchBar = React.forwardRef(function (props, ref) {
-  const { value = null, colors = 'surface1', placeholder = 'Search Placeholder', size = 'lg', returnKeyType = 'done', onChange } = props
+  const { value = null, colors = 'surface1', placeholder = 'Search...', size = 'lg', returnKeyType = 'done', onChange } = props
   const inputRef = React.useRef(null)
   const emitterRef = React.useRef(new EventEmitter())
   const [focused, setFocused] = React.useState(false)
