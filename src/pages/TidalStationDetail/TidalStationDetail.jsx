@@ -6,9 +6,9 @@ import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
 import useNavigatePage from '@hooks/useNavigatePage'
 import MapButtonGroup from '@components/composites/MapButtonGroup'
-import { GeoPoint } from 'src/utils/Structures'
+import { GeoPoint } from '@utils/Structures'
 import Section from '@components/elements/Section'
-import TidalChart from 'src/features/tides/TidalChart'
+import TidalChart from '@features/tides/TidalChart'
 import { useTidalFlow } from '@hooks/useTidalFlow'
 
 const TidalStationDetail = ({ route }) => {
@@ -42,7 +42,7 @@ const TidalStationDetail = ({ route }) => {
               coordinate={new GeoPoint(lat, lng)}
               onPress={navigatePage('map-detail', {
                 type: 'station',
-                headlineText: `${name}`,
+                headlineText: name,
                 body: howToReach,
                 subHeader: 'Tidal Station',
                 coordinate: new GeoPoint(lat, lng),
@@ -89,7 +89,7 @@ const createStyles = (theme, dimensions) => {
       gap: vars.unit,
       paddingLeft: vars.unit,
       paddingRight: vars.unit,
-    }, 
+    },
     overrideMaxDrawerHeight: height * .35
   })
 }

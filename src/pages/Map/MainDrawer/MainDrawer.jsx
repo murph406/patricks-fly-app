@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native'
 
 import View from '@components/elements/View'
@@ -7,9 +6,10 @@ import useStyles from '@hooks/useStyles'
 import SearchBar from '@components/elements/SearchBar'
 import { useMapContext } from '@pages/Map/MapContext'
 import React from 'react'
-import Text from '@components/elements/Text'
 import TabPicker from '@components/composites/TabPicker'
-
+import AllTab from './AllTab'
+import RiverTab from './RiverTab'
+import MyPlacesTab from './MyPlacesTab'
 
 const MainDrawer = () => {
     const s = useStyles(createStyles)
@@ -33,7 +33,6 @@ const MainDrawer = () => {
         <DraggableDrawer
             ref={mainDrawerRef}
             initialOpen={false}
-            bodyPanHandlersEnabled
             maxHeight={s.maxDrawerHeight}
             minHeight={s.minDrawerHeight}
             headerComponent={
@@ -55,7 +54,9 @@ const MainDrawer = () => {
             }>
 
             <View style={s.container}>
-                <Text>We could do something here...</Text>
+                {activeTab === 0 && <AllTab />}
+                {activeTab === 1 && <MyPlacesTab />}
+                {activeTab === 2 && <RiverTab />}
             </View>
         </DraggableDrawer>
     )
@@ -73,8 +74,13 @@ const createStyles = (theme, dimensions) => {
         },
         container: {
             flex: 1,
+        },
+        center: {
+            flex: 1,
+            gap: vars.double,
+            padding: vars.unit,
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
         },
         minDrawerHeight: vars.unit * 5.5,
         maxDrawerHeight: height * .675

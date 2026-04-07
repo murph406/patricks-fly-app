@@ -7,24 +7,49 @@ import View from '@components/elements/View'
 import Header from './Header'
 import useStyles from '@hooks/useStyles'
 import PatricksFlyShopDetail from '@components/features/sponsors/PatricksFlyShopDetail'
-import RiverCard from 'src/features/rivers/RiverCard'
+import RiverCard from '@features/rivers/RiverCard'
 import HorizontalList from '@components/composites/HorizontalList'
-import { RIVERS } from 'src/config/rivers'
+import { RIVERS } from '@config/rivers'
 import useNavigatePage from '@hooks/useNavigatePage'
 import EmptyState from '@components/composites/EmptyState'
 import MapButtonGroup from '@components/composites/MapButtonGroup'
-import { TIDAL_STATIONS } from 'src/config/tidalStations'
-import TidalStationCard from 'src/features/tides/TidalStationCard'
+import { TIDAL_STATIONS } from '@config/tidalStations'
+import TidalStationCard from '@features/tides/TidalStationCard'
+import { useUserContext } from '@stores/UserContext'
+import Button from '@components/elements/Button'
 
 const Home = () => {
   const s = useStyles(createStyles)
   const navigatePage = useNavigatePage()
+
+  const {
+    locationPermissionStatus,
+    notificationPermissionStatus,
+    validateLocationsPermissions,
+    validateNotificationPermissions
+  } = useUserContext()
 
   return (
     <View style={s.container}>
       <Header />
       <ScrollView style={s.container}>
         <View style={s.body}>
+
+          {((notificationPermissionStatus?.canAskAgain && !notificationPermissionStatus?.granted) || (locationPermissionStatus?.canAskAgain && !locationPermissionStatus?.granted)) && (
+            <View style={s.gap}>
+              {(notificationPermissionStatus?.canAskAgain && !notificationPermissionStatus?.granted) && (
+                <View style={s.buttonContainer}>
+                  <Button text='Enable Push Notifications' onPress={validateNotificationPermissions} />
+                </View>
+              )}
+
+              {(locationPermissionStatus?.canAskAgain && !locationPermissionStatus?.granted) && (
+                <View style={s.buttonContainer}>
+                  <Button text='Enable Location Services' onPress={validateLocationsPermissions} />
+                </View>
+              )}
+            </View>
+          )}
 
           <HorizontalList
             label='My Places'
@@ -82,6 +107,13 @@ const createStyles = (theme) => {
     spacing: {
       maxHeight: vars.unit * 4,
       width: 1,
-    }
+    },
+    gap: {
+      gap: vars.unit,
+      paddingTop: vars.unit,
+    },
+    buttonContainer: {
+      paddingHorizontal: vars.unit,
+    },
   })
 }

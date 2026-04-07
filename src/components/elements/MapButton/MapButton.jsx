@@ -6,7 +6,7 @@ import MapView from '@components/layouts/MapView'
 import useAnimation from '@hooks/useAnimation'
 import useStyles from '@hooks/useStyles'
 import MapPin from '../MapPin'
-import { GeoPoint } from 'src/utils/Structures'
+import { GeoPoint } from '@utils/Structures'
 
 const MapButton = ({ onPress, options = {}, enablePin = true, coordinate = new GeoPoint(47.639370, -122.326248) }) => {
   const mapRef = React.useRef()

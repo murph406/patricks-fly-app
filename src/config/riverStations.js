@@ -1,4 +1,5 @@
-export const STATIONS = {
+
+export const RIVER_STATIONS = {
   YUMW1: {
     id: 'YUMW1',
     label: 'Yakima - At Cle Elum',

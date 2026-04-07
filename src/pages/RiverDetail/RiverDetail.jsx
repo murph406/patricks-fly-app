@@ -6,9 +6,9 @@ import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
 import useNavigatePage from '@hooks/useNavigatePage'
 import HorizontalList from '@components/composites/HorizontalList'
-import RiverStationCard from 'src/features/rivers/RiverStationCard'
+import RiverStationCard from '@features/rivers/RiverStationCard'
 import MapButtonGroup from '@components/composites/MapButtonGroup'
-import { GeoPoint } from 'src/utils/Structures'
+import { GeoPoint } from '@utils/Structures'
 
 const RiverDetail = ({ route }) => {
   const containerRef = React.useRef(null)

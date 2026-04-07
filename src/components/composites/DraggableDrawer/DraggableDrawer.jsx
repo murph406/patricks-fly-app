@@ -2,7 +2,7 @@ import Divider from '@components/elements/Divider'
 import { useThemeContext } from '@stores/ThemeContext'
 import React from 'react'
 import { StyleSheet, View, Dimensions, Animated, PanResponder } from 'react-native'
-import { EventEmitter } from 'src/utils/Structures'
+import { EventEmitter } from '@utils/Structures'
 
 const { height } = Dimensions.get('window')
 const MAX_DOWNWARD_TRANSLATE_Y = 0

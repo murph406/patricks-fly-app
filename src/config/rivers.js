@@ -1,6 +1,6 @@
 import { FISH } from './fish'
 import { RIVER_TYPES } from './riverTypes'
-import { STATIONS } from './stations'
+import { RIVER_STATIONS } from './riverStations'
 
 // https://www.nwrfc.noaa.gov/rfc/
 
@@ -16,7 +16,7 @@ export const RIVERS = [
     description: 'The Yakima cuts through a steep basalt canyon in central Washington, fed by the eastern slopes of the Cascades.',
     type: [RIVER_TYPES.tailwater, RIVER_TYPES.freestone],
     fish: [FISH.rainbow_trout, FISH.brown_trout],
-    stations: [STATIONS.EASW1, STATIONS.YUMW1, STATIONS.TNAW1, STATIONS.HLKW1, STATIONS.UMTW1],
+    stations: [RIVER_STATIONS.EASW1, RIVER_STATIONS.YUMW1, RIVER_STATIONS.TNAW1, RIVER_STATIONS.HLKW1, RIVER_STATIONS.UMTW1],
   },
   {
     id: 'skagit',
@@ -29,7 +29,7 @@ export const RIVERS = [
     description: 'A major river draining the North Cascades of northwest Washington, running from the high peaks through old growth valleys to Puget Sound.',
     type: [],
     fish: [],
-    stations: [STATIONS.CONW1, STATIONS.MVEW1, STATIONS.SRMW1, STATIONS.GORW1],
+    stations: [RIVER_STATIONS.CONW1, RIVER_STATIONS.MVEW1, RIVER_STATIONS.SRMW1, RIVER_STATIONS.GORW1],
   },
   {
     id: 'green',
@@ -42,7 +42,7 @@ export const RIVERS = [
     description: 'The Green flows out of Howard Hanson Dam through the foothills southeast of Seattle before winding into the lowlands of King County.',
     type: [],
     fish: [],
-    stations: [STATIONS.GORW1, STATIONS.AUBW1, STATIONS.GPUW1],
+    stations: [RIVER_STATIONS.GORW1, RIVER_STATIONS.AUBW1, RIVER_STATIONS.GPUW1],
   },
   {
     id: 'cedar',
@@ -55,7 +55,7 @@ export const RIVERS = [
     description: 'The Cedar drains the Cascade foothills southeast of Seattle, flowing through Renton before emptying into Lake Washington.',
     type: [],
     fish: [],
-    stations: [STATIONS.LNDW1, STATIONS.RNTW1],
+    stations: [RIVER_STATIONS.LNDW1, RIVER_STATIONS.RNTW1],
   },
   {
     id: 'skykomish',
@@ -68,7 +68,7 @@ export const RIVERS = [
     description: 'The Skykomish drains the western slopes of the Cascades through the towns of Index and Sultan before joining the Snoqualmie to form the Snohomish River near Monroe.',
     type: [],
     fish: [],
-    stations: [STATIONS.GLBW1],
+    stations: [RIVER_STATIONS.GLBW1],
   },
   {
     id: 'stillaguamish',
@@ -81,6 +81,6 @@ export const RIVERS = [
     description: 'The Stillaguamish flows out of the Cascades through Arlington and Stanwood before reaching Port Susan Bay on Puget Sound.',
     type: [],
     fish: [],
-    stations: [STATIONS.ARLW1, STATIONS.ARGW1, STATIONS.SSFW1],
+    stations: [RIVER_STATIONS.ARLW1, RIVER_STATIONS.ARGW1, RIVER_STATIONS.SSFW1],
   },
 ]

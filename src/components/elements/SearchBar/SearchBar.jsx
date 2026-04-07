@@ -5,7 +5,7 @@ import { StyleSheet, TextInput, TouchableOpacity, View, Animated } from 'react-n
 
 import SearchIcon from '@assets/icons/search.svg'
 import CloseIcon from '@assets/icons/close.svg'
-import { EventEmitter } from 'src/utils/Structures'
+import { EventEmitter } from '@utils/Structures'
 
 const SearchBar = React.forwardRef(function (props, ref) {
   const { value = null, colors = 'surface1', placeholder = 'Search...', size = 'lg', returnKeyType = 'done', onChange } = props

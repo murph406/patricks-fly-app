@@ -5,11 +5,31 @@ import ImageView from '@components/layouts/ImageView'
 import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
 import useNavigatePage from '@hooks/useNavigatePage'
+import Section from '@components/elements/Section'
+import { useUserContext } from '@stores/UserContext'
+import Switch from '@components/elements/Switch'
 
 const Settings = () => {
   const containerRef = React.useRef(null)
   const navigatePage = useNavigatePage(createStyles)
   const s = useStyles(createStyles)
+
+  const {
+    locationPermissionStatus,
+    notificationPermissionStatus,
+    validateLocationsPermissions,
+    validateNotificationPermissions
+  } = useUserContext()
+
+  const notificationsSwitchValue = React.useMemo(() => {
+    if (notificationPermissionStatus?.status === 'granted') return true
+    return false
+  }, [notificationPermissionStatus])
+
+  const locationsSwitchValue = React.useMemo(() => {
+    if (locationPermissionStatus?.status === 'granted') return true
+    return false
+  }, [locationPermissionStatus])
 
   return (
     <React.Fragment>
@@ -20,7 +40,29 @@ const Settings = () => {
         onPressBack={navigatePage()}
         ref={containerRef}>
         <View style={s.container}>
-          <Text>Settings</Text>
+
+          <Section label='General'>
+            <View style={s.sectionContainer}>
+              <View style={s.row}>
+                <Text type='defaultBold' color='text2'>Push Notifications</Text>
+
+                <Switch
+                  value={notificationsSwitchValue}
+                  onChange={validateNotificationPermissions}
+                />
+              </View>
+
+              <View style={s.row}>
+                <Text type='defaultBold' color='text2'>Location Services</Text>
+
+                <Switch
+                  value={locationsSwitchValue}
+                  onChange={validateLocationsPermissions}
+                />
+              </View>
+
+            </View>
+          </Section>
         </View>
       </ImageView>
     </React.Fragment>
@@ -33,11 +75,22 @@ const createStyles = (theme) => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: vars.unit,
-      padding: vars.unit,
+      gap: vars.double,
+      paddingTop: vars.unit,
     },
+    flex: {
+      flex: 1
+    },
+    sectionContainer: {
+      paddingHorizontal: vars.unit,
+      gap: vars.unit,
+    },
+    row: {
+      flexDirection: 'row',
+      gap: vars.unit,
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    }
   })
 }
 
