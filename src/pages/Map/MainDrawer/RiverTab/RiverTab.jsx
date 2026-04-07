@@ -10,7 +10,7 @@ import { useMapContext } from '@pages/Map/MapContext'
 
 const RiverTab = () => {
   const s = useStyles(createStyles)
-  const { riverStations, handleListScrollEnd } = useMapContext()
+  const { handleItemClick, riverStations, handleListScrollEnd } = useMapContext()
 
   return (
     <View style={s.container}>
@@ -27,6 +27,7 @@ const RiverTab = () => {
               key={item?.id}
               text={item?.riverName}
               headline={item?.label}
+              onPress={handleItemClick('river-station', item)}
             />
           )}
         />

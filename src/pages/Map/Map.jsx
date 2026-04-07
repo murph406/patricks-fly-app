@@ -9,6 +9,8 @@ import useStyles from '@hooks/useStyles'
 import { MapProvider, useMapContext } from './MapContext'
 import MainDrawer from './MainDrawer'
 import MapPin from '@components/elements/MapPin'
+import RiverDrawer from './RiverDrawer'
+import TidalDrawer from './TidalDrawer'
 
 const Map = () => {
   const { selected, mapRef } = useMapContext()
@@ -25,6 +27,8 @@ const Map = () => {
       </View>
 
       <MainDrawer />
+      <RiverDrawer />
+      <TidalDrawer />
     </View>
   )
 }

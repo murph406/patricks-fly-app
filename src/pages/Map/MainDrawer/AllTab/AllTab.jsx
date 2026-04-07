@@ -38,7 +38,7 @@ const AllTab = () => {
                   key={item?.id}
                   text={item?.data?.location}
                   headline={item?.data?.name}
-                  onPress={handleItemClick('river-station', item.data)}
+                  onPress={handleItemClick('tidal-station', item.data)}
                 />
               )}
             </React.Fragment>

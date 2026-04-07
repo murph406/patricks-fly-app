@@ -11,6 +11,8 @@ const MapContext = React.createContext(null)
 export const MapProvider = ({ children }) => {
   const mapRef = React.useRef()
   const mainDrawerRef = React.useRef()
+  const riverDrawerRef = React.useRef()
+  const tidalDrawerRef = React.useRef()
   const search = useSearch()
   const s = useStyles(createStyles)
 
@@ -101,13 +103,17 @@ export const MapProvider = ({ children }) => {
   const value = {
     mapRef,
     mainDrawerRef,
+    riverDrawerRef,
+    tidalDrawerRef,
     handleListScrollEnd,
     handleItemClick,
+    setSelected,
     selected,
     search,
     allPoi,
     riverStations,
-    tidalStations
+    tidalStations,
+    DEFAULT_DRAWER_HEIGHT: s.defaultMaxDrawerHeight,
   }
 
   return (
