@@ -11,7 +11,7 @@ const MyPlacesTab = () => {
   return (
     <View style={s.container}>
       <View style={s.center}>
-        <EmptyState text='Coming Soon' />
+        <EmptyState type='coming-soon' text='Coming Soon' />
       </View>
     </View>
   )

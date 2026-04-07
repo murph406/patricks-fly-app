@@ -53,7 +53,7 @@ const Home = () => {
 
           <HorizontalList
             label='My Places'
-            listEmptyComponent={<EmptyState fill text='Coming Soon' />}
+            listEmptyComponent={<EmptyState fill type='coming-soon' text='Coming Soon' />}
           />
 
           <MapButtonGroup

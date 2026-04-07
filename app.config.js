@@ -76,7 +76,7 @@ export default () => {
         },
         config: {
           googleMaps: {
-            apiKey: "AIzaSyBv-OFKfkH-xDZ_8fJtYQZwZmOHAHKa91k"
+            apiKey: null
           }
         }
       },
@@ -166,7 +166,7 @@ export default () => {
         },
         config: {
           googleMaps: {
-            apiKey: "AIzaSyBv-OFKfkH-xDZ_8fJtYQZwZmOHAHKa91k"
+            apiKey: null
           }
         }
       },

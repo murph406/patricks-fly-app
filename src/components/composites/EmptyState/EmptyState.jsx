@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native'
 import InfoIcon from '@assets/icons/info.svg'
 import SearchIcon from '@assets/icons/search.svg'
 import SearchOffIcon from '@assets/icons/search-off.svg'
+import Upcoming from '@assets/icons/upcoming.svg'
 import Text from '@components/elements/Text'
 import useStyles from '@hooks/useStyles'
 
@@ -24,6 +25,14 @@ const EmptyState = ({ text = 'No Results', type, fill }) => {
       case 'search':
         return (
           <SearchIcon
+            fill={s.text2}
+            height={s.icon.height}
+            width={s.icon.width}
+          />
+        )
+      case 'coming-soon':
+        return (
+          <Upcoming
             fill={s.text2}
             height={s.icon.height}
             width={s.icon.width}
@@ -60,7 +69,7 @@ const createStyles = (theme) => {
     },
     filled: {
       flex: 1,
-      justifyContent: 'center', 
+      justifyContent: 'center',
       alignItems: 'center',
       width: '100%',
       minHeight: vars.unit * 12.5
