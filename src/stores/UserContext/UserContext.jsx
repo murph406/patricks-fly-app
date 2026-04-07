@@ -9,7 +9,7 @@ import * as SplashScreen from "expo-splash-screen"
 
 import { useAppState } from '@hooks/useAppState'
 import { sendNotification, writePushToken } from '@api/notifications'
-import { USER_DEVELOPER_KEY, USER_PUSH_NOTIFICATION_KEY } from '@utils/Vars'
+import { USER_DEVELOPER_KEY, USER_NAVIGATION_STATE_KEY, USER_PUSH_NOTIFICATION_KEY } from '@utils/Vars'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,8 +20,6 @@ Notifications.setNotificationHandler({
 })
 
 const UserContext = React.createContext(null)
-const USER_LOCATION_KEY = "key:user:location"
-const USER_NAVIGATION_STATE_KEY = 'key:navigation:state'
 
 export const UserProvider = ({ children }) => {
   const active = useAppState()
