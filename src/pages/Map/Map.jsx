@@ -8,9 +8,10 @@ import StatusBar from '@components/layouts/StatusBar'
 import useStyles from '@hooks/useStyles'
 import { MapProvider, useMapContext } from './MapContext'
 import MainDrawer from './MainDrawer'
+import MapPin from '@components/elements/MapPin'
 
 const Map = () => {
-  const { mapRef } = useMapContext()
+  const { selected, mapRef } = useMapContext()
   const s = useStyles(createStyles)
 
   return (
@@ -19,6 +20,7 @@ const Map = () => {
 
       <View style={s.container}>
         <MapView ref={mapRef}>
+          {selected && <MapPin {...selected} />}
         </MapView>
       </View>
 

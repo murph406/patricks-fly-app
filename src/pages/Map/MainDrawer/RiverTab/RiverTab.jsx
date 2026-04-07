@@ -25,7 +25,7 @@ const RiverTab = () => {
           renderItem={({ item }) => (
             <ListButton
               key={item?.id}
-              text={item?.label}
+              text={item?.riverName}
               headline={item?.label}
             />
           )}

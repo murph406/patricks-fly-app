@@ -10,6 +10,7 @@ import TabPicker from '@components/composites/TabPicker'
 import AllTab from './AllTab'
 import RiverTab from './RiverTab'
 import MyPlacesTab from './MyPlacesTab'
+import TidalTab from './TidalTab'
 
 const MainDrawer = () => {
     const s = useStyles(createStyles)
@@ -57,6 +58,7 @@ const MainDrawer = () => {
                 {activeTab === 0 && <AllTab />}
                 {activeTab === 1 && <MyPlacesTab />}
                 {activeTab === 2 && <RiverTab />}
+                {activeTab === 3 && <TidalTab />}
             </View>
         </DraggableDrawer>
     )

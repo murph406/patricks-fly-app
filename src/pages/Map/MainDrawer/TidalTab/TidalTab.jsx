@@ -8,45 +8,32 @@ import ListButton from '@components/elements/ListButton'
 import Divider from '@components/elements/Divider'
 import { useMapContext } from '@pages/Map/MapContext'
 
-const AllTab = () => {
+const TidalTab = () => {
   const s = useStyles(createStyles)
-  const { handleItemClick, allPoi, handleListScrollEnd } = useMapContext()
+  const { handleItemClick, tidalStations, handleListScrollEnd } = useMapContext()
 
   return (
     <View style={s.container}>
-      {(allPoi !== null && allPoi?.length != 0) && (
+      {(tidalStations !== null && tidalStations?.length != 0) && (
         <FlatList
           scrollEnabled={true}
-          data={allPoi}
+          data={tidalStations}
           scrollEventThrottle={16}
           onScrollEndDrag={handleListScrollEnd}
           ListFooterComponent={<Divider />}
           ItemSeparatorComponent={<Divider />}
           renderItem={({ item }) => (
-            <React.Fragment>
-              {item.type === 'river-station' && (
-                <ListButton
-                  key={item?.id}
-                  text={item?.data?.riverName}
-                  headline={item?.data?.label}
-                  onPress={handleItemClick('river-station', item.data)}
-                />
-              )}
-
-              {item.type === 'tidal-station' && (
-                <ListButton
-                  key={item?.id}
-                  text={item?.data?.location}
-                  headline={item?.data?.name}
-                  onPress={handleItemClick('river-station', item.data)}
-                />
-              )}
-            </React.Fragment>
+            <ListButton
+              key={item?.id}
+              headline={item?.name}
+              text={item?.location}
+              onPress={handleItemClick('tidal-station', item)}
+            />
           )}
         />
       )}
 
-      {(allPoi == null || allPoi?.length == 0) && (
+      {(tidalStations == null || tidalStations?.length == 0) && (
         <View style={s.center}>
           <EmptyState type='search-off' text='No Results' />
         </View>
@@ -55,7 +42,7 @@ const AllTab = () => {
   )
 }
 
-export default AllTab
+export default TidalTab
 
 const createStyles = (theme) => {
   const { vars } = theme
