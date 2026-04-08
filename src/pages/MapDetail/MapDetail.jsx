@@ -1,18 +1,21 @@
+import React from 'react'
+
+import { ScrollView, StyleSheet, View } from 'react-native'
+
+import Constants from "expo-constants"
+
+import BackIcon from '@assets/icons/back.svg'
 import DraggableDrawer from '@components/composites/DraggableDrawer'
+import DrawerHeader from '@components/composites/DrawerHeader'
 import Divider from '@components/elements/Divider'
+import IconButton from '@components/elements/IconButton'
+import MapPin from '@components/elements/MapPin'
+import Text from '@components/elements/Text'
 import MapView from '@components/layouts/MapView'
 import StatusBar from '@components/layouts/StatusBar'
-import useStyles from '@hooks/useStyles'
-import DrawerHeader from '@components/composites/DrawerHeader'
-import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import { spokaneLatLng } from '@utils/Vars'
-import BackIcon from '@assets/icons/back.svg'
 import useNavigatePage from '@hooks/useNavigatePage'
-import IconButton from '@components/elements/IconButton'
-import Constants from "expo-constants"
-import Text from '@components/elements/Text'
-import MapPin from '@components/elements/MapPin'
+import useStyles from '@hooks/useStyles'
+import { spokaneLatLng } from '@utils/Vars'
 
 const MapDetail = (props) => {
   const {
@@ -98,7 +101,7 @@ const createStyles = (theme, dimensions, props) => {
   const { maxDrawerHeight: defaultMaxDrawerHeight } = props
   const { vars, colors } = theme
   const isLandscape = width > height
-  let maxDrawerHeight = defaultMaxDrawerHeight || height * .175
+  const maxDrawerHeight = defaultMaxDrawerHeight || height * .175
 
   return StyleSheet.create({
     container: {

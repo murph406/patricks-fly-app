@@ -1,13 +1,14 @@
-import useAnimation from '@hooks/useAnimation'
-import useStyles from '@hooks/useStyles'
 import React from 'react'
+
 import { StyleSheet, TextInput, TouchableOpacity, View, Animated } from 'react-native'
 
-import SearchIcon from '@assets/icons/search.svg'
 import CloseIcon from '@assets/icons/close.svg'
+import SearchIcon from '@assets/icons/search.svg'
+import useAnimation from '@hooks/useAnimation'
+import useStyles from '@hooks/useStyles'
 import { EventEmitter } from '@utils/Structures'
 
-const SearchBar = React.forwardRef(function (props, ref) {
+const SearchBar = React.forwardRef(function SearchBar(props, ref) {
   const { value = null, colors = 'surface1', placeholder = 'Search...', size = 'lg', returnKeyType = 'done', onChange } = props
   const inputRef = React.useRef(null)
   const emitterRef = React.useRef(new EventEmitter())

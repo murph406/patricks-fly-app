@@ -15,7 +15,7 @@
     "build:android:main": "eas build --platform android --clear-cache  --profile main --local",
     "build:android:main:simulator": "eas build --platform android --clear-cache  --profile main:simulator --local",
     "build:all": "eas build --platform all --clear-cache  --profile develop --local",
-    "lint": "eslint . --fix",
+    "lint": "eslint src/ --ext .js,.jsx --fix",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
@@ -59,7 +59,8 @@
     "eslint-config-expo": "~10.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "inquirer": "^12.6.3",
-    "react-native-svg-transformer": "^1.5.1"
+    "react-native-svg-transformer": "^1.5.1",
+    "typescript": "^6.0.2"
   },
   "private": true
 }

@@ -9,8 +9,9 @@ import {
   TabActions,
 } from '@react-navigation/native'
 
-import TabButton from './TabButton'
 import useStyles from '@hooks/useStyles'
+
+import TabButton from './TabButton'
 
 
 const TabNavigator = (props) => {

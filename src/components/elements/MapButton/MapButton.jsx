@@ -5,8 +5,9 @@ import { StyleSheet, Animated, Pressable, View } from 'react-native'
 import MapView from '@components/layouts/MapView'
 import useAnimation from '@hooks/useAnimation'
 import useStyles from '@hooks/useStyles'
-import MapPin from '../MapPin'
 import { GeoPoint } from '@utils/Structures'
+
+import MapPin from '../MapPin'
 
 const MapButton = ({ onPress, options = {}, enablePin = true, coordinate = new GeoPoint(47.639370, -122.326248) }) => {
   const mapRef = React.useRef()

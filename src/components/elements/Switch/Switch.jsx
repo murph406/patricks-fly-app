@@ -1,7 +1,8 @@
-import useStyles from '@hooks/useStyles'
 import React from 'react'
 
 import { Switch as ReactSwitch, StyleSheet } from 'react-native'
+
+import useStyles from '@hooks/useStyles'
 
 const Switch = (props) => {
   const { value, onChange } = props

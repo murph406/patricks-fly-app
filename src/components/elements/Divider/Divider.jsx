@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { StyleSheet, View } from 'react-native'
+
 import useStyles from '@hooks/useStyles'
 
 const Divider = ({ padding = 'p0' }) => {

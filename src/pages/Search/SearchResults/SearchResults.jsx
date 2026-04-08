@@ -1,9 +1,12 @@
-import useStyles from '@hooks/useStyles'
 import React from 'react'
+
 import { KeyboardAvoidingView, StyleSheet, Animated, Platform, ScrollView } from 'react-native'
-import { useSearchContext } from '../SearchContext'
-import useAnimation from '@hooks/useAnimation'
+
 import StatusBar from '@components/layouts/StatusBar'
+import useAnimation from '@hooks/useAnimation'
+import useStyles from '@hooks/useStyles'
+
+import { useSearchContext } from '../SearchContext'
 
 const SearchResults = () => {
   const { searchBarRef } = useSearchContext()
@@ -50,9 +53,7 @@ const SearchResults = () => {
     <Animated.View style={[s.container, { opacity: interpolations.opacity, zIndex: isResultsVisible ? 1 : -1 }]}>
       <StatusBar />
       <KeyboardAvoidingView style={s.inner} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <ScrollView style={s.scrollViewContent}>
-
-        </ScrollView>
+        <ScrollView style={s.scrollViewContent} />
       </KeyboardAvoidingView >
     </Animated.View >
   )

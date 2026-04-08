@@ -1,13 +1,14 @@
 import React from 'react'
+
 import { View, StyleSheet, ActivityIndicator } from 'react-native'
-import { useDerivedValue, useSharedValue } from 'react-native-reanimated'
 
-import { format } from 'date-fns'
-import { CartesianChart, Line, Area, useChartPressState } from 'victory-native'
 import { Text as SkiaText, Line as SkiaLine, useFont, Circle as SkiaCircle, vec } from '@shopify/react-native-skia'
+import { format } from 'date-fns'
+import { useDerivedValue, useSharedValue } from 'react-native-reanimated'
+import { CartesianChart, Line, Area, useChartPressState } from 'victory-native'
 
-import useStyles from '@hooks/useStyles'
 import EmptyState from '@components/composites/EmptyState'
+import useStyles from '@hooks/useStyles'
 
 const APPROX_LABEL_WIDTH = 50
 const APPROX_TIME_LABEL_WIDTH = 85

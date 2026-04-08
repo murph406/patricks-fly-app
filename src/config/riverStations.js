@@ -72,8 +72,8 @@ export const RIVER_STATIONS = {
     lat: 48.6667,
     lng: -121.2500,
   },
-  GORW1: {
-    id: 'GORW1',
+  GRKW1: {
+    id: 'GRKW1',
     label: 'Green - Below Howard Hanson Dam',
     riverId: 'green',
     riverName: 'Green River',

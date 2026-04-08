@@ -1,8 +1,9 @@
 import React from 'react'
+
 import { FlatList, StyleSheet, View } from 'react-native'
 
-import useStyles from '@hooks/useStyles'
 import Tab from '@components/elements/Tab'
+import useStyles from '@hooks/useStyles'
 
 const TabPicker = ({ tabs = [], activeIndex = 0, onChange, }) => {
   const s = useStyles(createStyles)

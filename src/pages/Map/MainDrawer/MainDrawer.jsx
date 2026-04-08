@@ -1,15 +1,20 @@
+import React from 'react'
+
 import { StyleSheet } from 'react-native'
 
-import View from '@components/elements/View'
+
 import DraggableDrawer from '@components/composites/DraggableDrawer'
-import useStyles from '@hooks/useStyles'
-import SearchBar from '@components/elements/SearchBar'
-import { useMapContext } from '@pages/Map/MapContext'
-import React from 'react'
 import TabPicker from '@components/composites/TabPicker'
+import SearchBar from '@components/elements/SearchBar'
+import View from '@components/elements/View'
+import useStyles from '@hooks/useStyles'
+import { useMapContext } from '@pages/Map/MapContext'
+
+
+
 import AllTab from './AllTab'
-import RiverTab from './RiverTab'
 import MyPlacesTab from './MyPlacesTab'
+import RiverTab from './RiverTab'
 import TidalTab from './TidalTab'
 
 const MainDrawer = () => {

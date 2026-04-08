@@ -1,8 +1,10 @@
+import React from 'react'
+
+import { StyleSheet, TouchableOpacity, Image as RNImage, Animated } from 'react-native'
+
 import Text from '@components/elements/Text'
 import useAnimation from '@hooks/useAnimation'
 import useStyles from '@hooks/useStyles'
-import React from 'react'
-import { StyleSheet, TouchableOpacity, Image as RNImage, Animated } from 'react-native'
 
 const RiverCard = ({ name, state, image, onPress }) => {
   const [pressed, setPressed] = React.useState(false)
@@ -51,7 +53,6 @@ const createStyles = (theme, dimensions) => {
     container: {
     },
     logoContainer: {
-      borderRadius: vars.unit,
       height: vars.unit * 10,
       borderRadius: vars.unit * .75,
       aspectRatio: 1.35,

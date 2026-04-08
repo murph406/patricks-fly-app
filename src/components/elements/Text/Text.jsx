@@ -1,7 +1,8 @@
-import useStyles from '@hooks/useStyles'
 import React from 'react'
 
 import { StyleSheet, Text as ReactText, Platform } from 'react-native'
+
+import useStyles from '@hooks/useStyles'
 
 const Text = ({
   style,

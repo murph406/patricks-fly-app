@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { format, addDays, subDays } from 'date-fns'
 
 const BASE_URL = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter'
@@ -45,10 +46,8 @@ export function useTidalFlow(stationId) {
                     isForecast: x > now,
                 }
             })
-            debugger
             setData(predictions)
         } catch (e) {
-            debugger
             setError(e.message)
         } finally {
             setLoading(false)

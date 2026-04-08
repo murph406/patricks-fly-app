@@ -1,15 +1,16 @@
 import React from 'react'
+
 import { StatusBar, StyleSheet, View } from 'react-native'
 
-import ImageView from '@components/layouts/ImageView'
-import Text from '@components/elements/Text'
-import useStyles from '@hooks/useStyles'
-import useNavigatePage from '@hooks/useNavigatePage'
 import MapButtonGroup from '@components/composites/MapButtonGroup'
-import { GeoPoint } from '@utils/Structures'
 import Section from '@components/elements/Section'
+import Text from '@components/elements/Text'
+import ImageView from '@components/layouts/ImageView'
 import TidalChart from '@features/tides/TidalChart'
+import useNavigatePage from '@hooks/useNavigatePage'
+import useStyles from '@hooks/useStyles'
 import { useTidalFlow } from '@hooks/useTidalFlow'
+import { GeoPoint } from '@utils/Structures'
 
 const TidalStationDetail = ({ route }) => {
   const containerRef = React.useRef(null)

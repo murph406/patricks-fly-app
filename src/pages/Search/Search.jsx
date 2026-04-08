@@ -2,19 +2,20 @@ import React from 'react'
 
 import { ActivityIndicator, FlatList, Linking, Platform, ScrollView, StyleSheet } from 'react-native'
 
-import View from '@components/elements/View'
-
-import Header from './Header'
-import useStyles from '@hooks/useStyles'
-import KeyboardSearch from './KeyboardSearch'
-import Section from '@components/elements/Section'
+import EmptyState from '@components/composites/EmptyState'
 import Divider from '@components/elements/Divider'
 import ListButton from '@components/elements/ListButton'
+import Section from '@components/elements/Section'
+import View from '@components/elements/View'
 import useNavigatePage from '@hooks/useNavigatePage'
-import SearchResults from './SearchResults'
-import { SearchProvider, useSearchContext } from './SearchContext'
+import useStyles from '@hooks/useStyles'
 import { APP_STORE_ID, PATRICKS_FLY_SHOP_URL, PLAY_STORE_ID } from '@utils/Vars'
-import EmptyState from '@components/composites/EmptyState'
+
+import Header from './Header'
+import KeyboardSearch from './KeyboardSearch'
+import { SearchProvider, useSearchContext } from './SearchContext'
+import SearchResults from './SearchResults'
+
 
 const Search = () => {
   const { recents } = useSearchContext()

@@ -10,18 +10,18 @@ import MapIcon from '@assets/icons/map.svg'
 import SearchFilledIcon from '@assets/icons/search-filled.svg'
 import SearchIcon from '@assets/icons/search.svg'
 import TabNavigator from '@components/layouts/TabNavigator'
-import { useUserContext } from '@stores/UserContext'
-
-import Splash from '@pages/Splash'
-import Search from '@pages/Search'
-import Map from '@pages/Map'
 import Home from '@pages/Home'
-import Webview from '@pages/Webview'
-import Settings from '@pages/Settings'
+import Map from '@pages/Map'
+import MapDetail from '@pages/MapDetail'
 import RiverDetail from '@pages/RiverDetail'
 import RiverStationDetail from '@pages/RiverStationDetail'
+import Search from '@pages/Search'
+import Settings from '@pages/Settings'
+import Splash from '@pages/Splash'
 import TidalStationDetail from '@pages/TidalStationDetail'
-import MapDetail from '@pages/MapDetail'
+import Webview from '@pages/Webview'
+import { useUserContext } from '@stores/UserContext'
+
 
 const MyTabNavigator = createNavigatorFactory(TabNavigator)
 

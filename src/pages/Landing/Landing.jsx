@@ -1,21 +1,22 @@
 import React from 'react'
-        import { StyleSheet, Text, View } from 'react-native'
 
-        const Landing = () => {
-        const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            backgroundColor: '#fff',
-            alignItems: 'center',
-            justifyContent: 'center',
-          },
-        })
+import { StyleSheet, Text, View } from 'react-native'
 
-        return (
-            <View style={styles.container}>
-            <Text></Text>
-            </View>
-        )
-        }
+const Landing = () => {
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  })
 
-        export default Landing
+  return (
+    <View style={styles.container}>
+      <Text />
+    </View>
+  )
+}
+
+export default Landing

@@ -19,7 +19,7 @@ const APP_FONTS = {
 }
 
 export const ThemeProvider = ({ children }) => {
-  let colorScheme = useColorScheme()
+  const colorScheme = useColorScheme()
   const [fontsLoaded] = useFonts(APP_FONTS)
 
   const colors = React.useMemo(() => {

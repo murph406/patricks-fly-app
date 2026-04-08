@@ -1,8 +1,10 @@
-import useStyles from '@hooks/useStyles'
 import React from 'react'
+
 import { ActivityIndicator, StyleSheet, TouchableOpacity, View } from 'react-native'
 
 import KeyboardRightIcon from '@assets/icons/keyboard-right.svg'
+import useStyles from '@hooks/useStyles'
+
 import Text from '../Text'
 
 const ListButton = ({ headline = 'Headline', text = 'Example here', onPress = null, loading = false }) => {

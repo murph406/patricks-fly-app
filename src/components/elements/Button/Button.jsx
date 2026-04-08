@@ -3,9 +3,9 @@ import React from 'react'
 import { ActivityIndicator, StyleSheet, TouchableOpacity } from 'react-native'
 
 import useAnimation from '@hooks/useAnimation'
+import useStyles from '@hooks/useStyles'
 
 import Text from '../Text'
-import useStyles from '@hooks/useStyles'
 
 const Button = ({ text = 'Button', color = 'surface3', loading, onPress, style }) => {
   const s = useStyles(createStyles)

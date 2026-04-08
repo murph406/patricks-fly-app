@@ -1,8 +1,11 @@
 import React from 'react'
+
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import Text from '../Text'
-import useStyles from '@hooks/useStyles'
+
 import useAnimation from '@hooks/useAnimation'
+import useStyles from '@hooks/useStyles'
+
+import Text from '../Text'
 
 const Tab = ({ text = '', color = 'brand', onPress }) => {
   const [pressed, setPressed] = React.useState(false)

@@ -2,10 +2,10 @@ import React from 'react'
 
 import { StyleSheet, View } from 'react-native'
 
-import useStyles from '@hooks/useStyles'
-import Text from '@components/elements/Text'
-import IconButton from '@components/elements/IconButton'
 import CloseIcon from '@assets/icons/close.svg'
+import IconButton from '@components/elements/IconButton'
+import Text from '@components/elements/Text'
+import useStyles from '@hooks/useStyles'
 
 const DrawerHeader = ({ headline = '', description = '', headerComponent, onClose }) => {
   const s = useStyles(createStyles)

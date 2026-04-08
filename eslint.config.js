@@ -7,7 +7,13 @@ module.exports = defineConfig([
     ignores: ['dist/*'],
     rules: {
       'semi': ['error', 'never'],
-      'react-hooks/exhaustive-deps': ['error', 'never'],
+      'no-debugger': ['error'],  
+      'react/jsx-no-duplicate-props': ['error'],
+      'react/self-closing-comp': ['error'],
+      'react-hooks/rules-of-hooks': ['error'],
+      'react-hooks/exhaustive-deps': ['warn'],
+      'prefer-const': ['error'], 
+      'no-var': ['error'], 
       'import/order': [
         'error',
         {
@@ -50,8 +56,9 @@ module.exports = defineConfig([
         alias: {
           map: [
             ['@components', './src/components'],
-            ['@pages', './src/screens/pages'],
+            ['@pages', './src/pages'],
             ['@utils', './src/utils'],
+            ['@config', './src/config'],
             ['@features', './src/features'],
             ['@hooks', './src/hooks'],
             ['@services', './src/services'],
@@ -59,6 +66,7 @@ module.exports = defineConfig([
             ['@router', './src/router'],
             ['@assets', './src/assets'],
             ['@constants', './src/constants'],
+            ['@api', './src/api'],
             ['@', './src'],
           ],
           extensions: ['.js', '.jsx', '.json']

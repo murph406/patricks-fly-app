@@ -1,16 +1,19 @@
 import React from 'react'
+
 import { ScrollView, StyleSheet, View } from 'react-native'
+
+
 import { format, parseISO } from 'date-fns'
 
-import DraggableDrawer from '@components/composites/DraggableDrawer'
-import useStyles from '@hooks/useStyles'
-import { useMapContext } from '@pages/Map/MapContext'
-import Divider from '@components/elements/Divider'
 import WaterIcon from '@assets/icons/water.svg'
+import DraggableDrawer from '@components/composites/DraggableDrawer'
 import DrawerHeader from '@components/composites/DrawerHeader'
-import { useRiverFlow } from '@hooks/useRiverFlow'
+import Divider from '@components/elements/Divider'
 import Section from '@components/elements/Section'
 import RiverFlowChart from '@features/rivers/RiverFlowChart'
+import { useRiverFlow } from '@hooks/useRiverFlow'
+import useStyles from '@hooks/useStyles'
+import { useMapContext } from '@pages/Map/MapContext'
 
 const RiverStationDrawer = () => {
     const { selected, setSelected, riverDrawerRef, mainDrawerRef, DEFAULT_DRAWER_HEIGHT } = useMapContext()

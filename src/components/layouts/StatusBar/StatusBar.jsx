@@ -4,8 +4,8 @@ import { StyleSheet, StatusBar as ReactStatusBar, View } from 'react-native'
 
 import Constants from "expo-constants"
 
-import { useThemeContext } from '@stores/ThemeContext'
 import useStyles from '@hooks/useStyles'
+import { useThemeContext } from '@stores/ThemeContext'
 
 const StatusBar = () => {
   const theme = useThemeContext()

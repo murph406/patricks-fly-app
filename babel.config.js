@@ -1,5 +1,5 @@
 module.exports = function (api) {
-    api.cache(true)
+    api.cache(true);
 
     return {
         presets: ['babel-preset-expo'],
@@ -21,11 +21,10 @@ module.exports = function (api) {
                         '@constants': './src/constants',
                         '@config': './src/config',
                         '@api': './src/api',
-                        '@db': './src/db',
                         '@': './src',
                     },
                 },
             ],
         ],
-    }
-}
+    };
+};

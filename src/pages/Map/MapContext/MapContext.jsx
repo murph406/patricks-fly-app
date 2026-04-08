@@ -1,10 +1,12 @@
 import React from 'react'
-import useSearch from '@hooks/useSearch'
+
+import { StyleSheet } from 'react-native'
+
 import { RIVER_STATIONS } from '@config/riverStations'
 import { TIDAL_STATIONS } from '@config/tidalStations'
+import useSearch from '@hooks/useSearch'
 import useStyles from '@hooks/useStyles'
 import { GeoPoint } from '@utils/Structures'
-import { StyleSheet } from 'react-native'
 
 const MapContext = React.createContext(null)
 
@@ -29,7 +31,7 @@ export const MapProvider = ({ children }) => {
     })
 
     return data
-  }, [search.value, RIVER_STATIONS])
+  }, [search.value])
 
   const tidalStations = React.useMemo(() => {
     let data = TIDAL_STATIONS
@@ -42,10 +44,10 @@ export const MapProvider = ({ children }) => {
     })
 
     return data
-  }, [search.value, TIDAL_STATIONS])
+  }, [search.value])
 
   const allPoi = React.useMemo(() => {
-    let l = []
+    const l = []
 
     if (riverStations) for (let i = 0; i < riverStations.length; i++) {
       l.push({
@@ -79,17 +81,18 @@ export const MapProvider = ({ children }) => {
 
   function handleItemClick(type = '', item = {}) {
     return () => {
-      let title = ''
-      let description = ''
+      const title = ''
+      const description = ''
       let drawerHeight = 0
+      let coordinate = 0
 
       switch (type) {
         case 'river-station':
-          var coordinate = new GeoPoint(item?.lat, item?.lng)
+          coordinate = new GeoPoint(item?.lat, item?.lng)
           drawerHeight = s.defaultMaxDrawerHeight
           setSelected({ type, coordinate, title, description, drawerHeight, ...item })
         case 'tidal-station':
-          var coordinate = new GeoPoint(item?.lat, item?.lng)
+          coordinate = new GeoPoint(item?.lat, item?.lng)
           drawerHeight = s.defaultMaxDrawerHeight
           setSelected({ type, coordinate, title, description, drawerHeight, ...item })
         default:

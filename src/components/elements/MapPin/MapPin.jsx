@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { StyleSheet, Image } from 'react-native'
-import useStyles from '@hooks/useStyles'
+
 import { Marker, } from 'react-native-maps'
+
+import useStyles from '@hooks/useStyles'
 
 const MapPin = (props) => {
     const { title, description, coordinate } = props

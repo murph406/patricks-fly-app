@@ -2,13 +2,14 @@ import React from 'react'
 
 import { StyleSheet } from 'react-native'
 
+import MapPin from '@components/elements/MapPin'
 import View from '@components/elements/View'
 import MapView from '@components/layouts/MapView'
 import StatusBar from '@components/layouts/StatusBar'
 import useStyles from '@hooks/useStyles'
-import { MapProvider, useMapContext } from './MapContext'
+
 import MainDrawer from './MainDrawer'
-import MapPin from '@components/elements/MapPin'
+import { MapProvider, useMapContext } from './MapContext'
 import RiverStationDrawer from './RiverStationDrawer'
 import TidalStationDrawer from './TidalStationDrawer'
 

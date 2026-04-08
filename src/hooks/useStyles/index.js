@@ -1,8 +1,9 @@
 import React from 'react'
+
 import { StyleSheet } from 'react-native'
 
-import { useThemeContext } from '@stores/ThemeContext'
 import useDimensions from "@hooks/useDimensions"
+import { useThemeContext } from '@stores/ThemeContext'
 
 function useStyles(callback = () => StyleSheet.create({}), props) {
     const theme = useThemeContext()

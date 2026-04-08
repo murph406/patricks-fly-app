@@ -1,12 +1,15 @@
 import React from "react"
+
 import { StyleSheet, Animated, View, Image } from "react-native"
+
 import Constants from "expo-constants"
 import * as ScreenOrientation from 'expo-screen-orientation'
 
-import useStyles from "@hooks/useStyles"
-import BackSplashImage from "@assets/images/casting.jpg"
-import IconButton from "../../elements/IconButton"
 import BackIcon from '@assets/icons/back.svg'
+import BackSplashImage from "@assets/images/casting.jpg"
+import useStyles from "@hooks/useStyles"
+
+import IconButton from "../../elements/IconButton"
 import Text from "../../elements/Text"
 
 const ImageView = React.forwardRef(function ImageView(props, ref) {
@@ -114,7 +117,6 @@ const createStyles = (theme, dimensions, props) => {
     image: {
       flex: 1,
       height: !isLandscape && '100%',
-      width: !isLandscape && '100%',
       resizeMode: 'cover',
       backgroundColor: colors.surface3,
       tintColor,

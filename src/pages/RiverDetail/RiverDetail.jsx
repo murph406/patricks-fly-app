@@ -1,13 +1,14 @@
 import React from 'react'
+
 import { StatusBar, StyleSheet, View, Image as RNImage } from 'react-native'
 
-import ImageView from '@components/layouts/ImageView'
-import Text from '@components/elements/Text'
-import useStyles from '@hooks/useStyles'
-import useNavigatePage from '@hooks/useNavigatePage'
 import HorizontalList from '@components/composites/HorizontalList'
-import RiverStationCard from '@features/rivers/RiverStationCard'
 import MapButtonGroup from '@components/composites/MapButtonGroup'
+import Text from '@components/elements/Text'
+import ImageView from '@components/layouts/ImageView'
+import RiverStationCard from '@features/rivers/RiverStationCard'
+import useNavigatePage from '@hooks/useNavigatePage'
+import useStyles from '@hooks/useStyles'
 import { GeoPoint } from '@utils/Structures'
 
 const RiverDetail = ({ route }) => {

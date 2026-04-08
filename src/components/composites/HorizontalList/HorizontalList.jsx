@@ -2,8 +2,8 @@ import React from 'react'
 
 import { FlatList, StyleSheet, View } from 'react-native'
 
-import useStyles from '@hooks/useStyles'
 import Section from '@components/elements/Section'
+import useStyles from '@hooks/useStyles'
 
 const HorizontalList = ({ label = 'label', data = null, minHeight, loading, renderItem, listEmptyComponent, listFooterComponent, onPressAll }) => {
   const s = useStyles(createStyles)

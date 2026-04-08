@@ -1,21 +1,23 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
-import { format, parseISO } from 'date-fns'
 
+import { ScrollView, StyleSheet, View } from 'react-native'
+
+import { format, parseISO } from 'date-fns'
+import Constants from "expo-constants"
+
+import BackIcon from '@assets/icons/back.svg'
 import DraggableDrawer from '@components/composites/DraggableDrawer'
+import DrawerHeader from '@components/composites/DrawerHeader'
 import Divider from '@components/elements/Divider'
+import IconButton from '@components/elements/IconButton'
+import MapPin from '@components/elements/MapPin'
 import MapView from '@components/layouts/MapView'
 import StatusBar from '@components/layouts/StatusBar'
-import useStyles from '@hooks/useStyles'
-import BackIcon from '@assets/icons/back.svg'
-import useNavigatePage from '@hooks/useNavigatePage'
-import IconButton from '@components/elements/IconButton'
-import Constants from "expo-constants"
-import MapPin from '@components/elements/MapPin'
-import DrawerHeader from '@components/composites/DrawerHeader'
-import { GeoPoint } from '@utils/Structures'
-import { useRiverFlow } from '@hooks/useRiverFlow'
 import RiverFlowChart from '@features/rivers/RiverFlowChart'
+import useNavigatePage from '@hooks/useNavigatePage'
+import { useRiverFlow } from '@hooks/useRiverFlow'
+import useStyles from '@hooks/useStyles'
+import { GeoPoint } from '@utils/Structures'
 
 const RiverStationDetail = ({ route }) => {
   const {

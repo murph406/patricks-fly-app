@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { StyleSheet } from 'react-native'
-import { getCenter, getBounds } from 'geolib'
 
+import { getCenter, getBounds } from 'geolib'
 import ReactMapView, { UrlTile } from 'react-native-maps'
 
-import { EventEmitter, GeoPoint } from '@utils/Structures'
 import useStyles from '@hooks/useStyles'
+import { EventEmitter, GeoPoint } from '@utils/Structures'
 
 // const URL_TEMPLATE = "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}"
 const URL_TEMPLATE = "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"

@@ -1,6 +1,6 @@
 import { FISH } from './fish'
-import { RIVER_TYPES } from './riverTypes'
 import { RIVER_STATIONS } from './riverStations'
+import { RIVER_TYPES } from './riverTypes'
 
 // https://www.nwrfc.noaa.gov/rfc/
 

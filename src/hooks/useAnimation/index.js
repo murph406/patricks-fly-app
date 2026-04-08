@@ -3,8 +3,8 @@ import React from 'react'
 import { Animated, Easing } from 'react-native'
 
 function useAnimation(props) {
-    let { doAnimation, duration = null } = props
-    let [animation] = React.useState(new Animated.Value(0))
+    const { doAnimation, duration = null } = props
+    const [animation] = React.useState(new Animated.Value(0))
 
     React.useEffect(() => {
         if (duration) Animated.timing(animation, {

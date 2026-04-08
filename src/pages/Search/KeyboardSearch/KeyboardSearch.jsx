@@ -1,7 +1,10 @@
+import React from 'react'
+
+import { StyleSheet, View, KeyboardAvoidingView, Platform } from 'react-native'
+
 import SearchBar from '@components/elements/SearchBar'
 import useStyles from '@hooks/useStyles'
-import React from 'react'
-import { StyleSheet, View, KeyboardAvoidingView, Platform } from 'react-native'
+
 import { useSearchContext } from '../SearchContext'
 
 const KeyboardSearch = () => {

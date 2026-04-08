@@ -2,21 +2,23 @@ import React from 'react'
 
 import { ScrollView, StyleSheet } from 'react-native'
 
+
+
+import EmptyState from '@components/composites/EmptyState'
+import HorizontalList from '@components/composites/HorizontalList'
+import MapButtonGroup from '@components/composites/MapButtonGroup'
+import Button from '@components/elements/Button'
 import View from '@components/elements/View'
+import PatricksFlyShopDetail from '@components/features/sponsors/PatricksFlyShopDetail'
+import { RIVERS } from '@config/rivers'
+import { TIDAL_STATIONS } from '@config/tidalStations'
+import RiverCard from '@features/rivers/RiverCard'
+import TidalStationCard from '@features/tides/TidalStationCard'
+import useNavigatePage from '@hooks/useNavigatePage'
+import useStyles from '@hooks/useStyles'
+import { useUserContext } from '@stores/UserContext'
 
 import Header from './Header'
-import useStyles from '@hooks/useStyles'
-import PatricksFlyShopDetail from '@components/features/sponsors/PatricksFlyShopDetail'
-import RiverCard from '@features/rivers/RiverCard'
-import HorizontalList from '@components/composites/HorizontalList'
-import { RIVERS } from '@config/rivers'
-import useNavigatePage from '@hooks/useNavigatePage'
-import EmptyState from '@components/composites/EmptyState'
-import MapButtonGroup from '@components/composites/MapButtonGroup'
-import { TIDAL_STATIONS } from '@config/tidalStations'
-import TidalStationCard from '@features/tides/TidalStationCard'
-import { useUserContext } from '@stores/UserContext'
-import Button from '@components/elements/Button'
 
 const Home = () => {
   const s = useStyles(createStyles)

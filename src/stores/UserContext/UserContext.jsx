@@ -1,14 +1,15 @@
 import React from 'react'
-import Constants from "expo-constants"
+
 import { Alert, Linking, Platform } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import * as Notifications from 'expo-notifications'
+import Constants from "expo-constants"
 import * as Location from 'expo-location'
+import * as Notifications from 'expo-notifications'
 import * as SplashScreen from "expo-splash-screen"
 
-import { useAppState } from '@hooks/useAppState'
 import { sendNotification, writePushToken } from '@api/notifications'
+import { useAppState } from '@hooks/useAppState'
 import { USER_DEVELOPER_KEY, USER_NAVIGATION_STATE_KEY, USER_PUSH_NOTIFICATION_KEY } from '@utils/Vars'
 
 Notifications.setNotificationHandler({
@@ -54,9 +55,7 @@ export const UserProvider = ({ children }) => {
 
   async function setNavigationState() {
     const savedStateString = await AsyncStorage.getItem(USER_NAVIGATION_STATE_KEY)
-    let state
-
-    state = savedStateString
+    const state = savedStateString
       ? JSON.parse(savedStateString)
       : { routes: [{ name: 'main' }] }
 
@@ -93,7 +92,7 @@ export const UserProvider = ({ children }) => {
         })
       }
 
-      let res = await Notifications.getExpoPushTokenAsync({ 'projectId': Constants.expoConfig.extra.eas.projectId })
+      const res = await Notifications.getExpoPushTokenAsync({ 'projectId': Constants.expoConfig.extra.eas.projectId })
       const savedToken = await AsyncStorage.getItem(USER_PUSH_NOTIFICATION_KEY)
       const newToken = res.data
 
@@ -110,7 +109,7 @@ export const UserProvider = ({ children }) => {
 
   async function setUserLocation() {
     try {
-      let res = await Location.getCurrentPositionAsync()
+      const res = await Location.getCurrentPositionAsync()
 
       setLocation({
         latitude: res.coords.latitude,
@@ -136,7 +135,7 @@ export const UserProvider = ({ children }) => {
   }
 
   const validateNotificationPermissions = async () => {
-    let options = [
+    const options = [
       {
         text: 'Cancel',
         style: 'cancel',
@@ -161,8 +160,8 @@ export const UserProvider = ({ children }) => {
 
       Alert.alert(errTitle, errMessage, options)
     } else {
-      let errTitle = 'Disable Notifications?'
-      let errMessage = 'You can disable notifications from your settings'
+      const errTitle = 'Disable Notifications?'
+      const errMessage = 'You can disable notifications from your settings'
 
       options.push({ text: 'Settings', onPress: () => Linking.openURL('app-settings:') })
       Alert.alert(errTitle, errMessage, options)
@@ -170,7 +169,7 @@ export const UserProvider = ({ children }) => {
   }
 
   const validateLocationsPermissions = async () => {
-    let options = [
+    const options = [
       {
         text: 'Cancel',
         style: 'cancel',
@@ -196,8 +195,8 @@ export const UserProvider = ({ children }) => {
 
       Alert.alert(errTitle, errMessage, options)
     } else {
-      let errTitle = 'Disable Notifications?'
-      let errMessage = 'You can disable location services from your settings'
+      const errTitle = 'Disable Notifications?'
+      const errMessage = 'You can disable location services from your settings'
 
       options.push({ text: 'Settings', onPress: () => Linking.openURL('app-settings:') })
       Alert.alert(errTitle, errMessage, options)

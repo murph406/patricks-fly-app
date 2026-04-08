@@ -10,9 +10,7 @@ const Splash = () => {
   const s = useStyles(createStyles)
 
   return (
-    <SafeAreaView style={s.container}>
-
-    </SafeAreaView>
+    <SafeAreaView style={s.container} />
   )
 }
 

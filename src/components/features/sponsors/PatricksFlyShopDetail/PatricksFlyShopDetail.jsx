@@ -5,8 +5,8 @@ import { Dimensions, Image, StyleSheet, Animated, TouchableOpacity, View } from 
 import NorthernQuestLogo from '@assets/images/logo-retro.png'
 import Text from '@components/elements/Text'
 import useAnimation from '@hooks/useAnimation'
-import useStyles from '@hooks/useStyles'
 import useNavigatePage from '@hooks/useNavigatePage'
+import useStyles from '@hooks/useStyles'
 import { PATRICKS_FLY_SHOP_URL } from '@utils/Vars'
 
 const { width } = Dimensions.get("screen")

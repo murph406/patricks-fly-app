@@ -1,13 +1,14 @@
 import React from 'react'
+
 import { StatusBar, StyleSheet, View } from 'react-native'
 
-import ImageView from '@components/layouts/ImageView'
-import Text from '@components/elements/Text'
-import useStyles from '@hooks/useStyles'
-import useNavigatePage from '@hooks/useNavigatePage'
 import Section from '@components/elements/Section'
-import { useUserContext } from '@stores/UserContext'
 import Switch from '@components/elements/Switch'
+import Text from '@components/elements/Text'
+import ImageView from '@components/layouts/ImageView'
+import useNavigatePage from '@hooks/useNavigatePage'
+import useStyles from '@hooks/useStyles'
+import { useUserContext } from '@stores/UserContext'
 
 const Settings = () => {
   const containerRef = React.useRef(null)

@@ -12,8 +12,7 @@ const Header = () => {
     <React.Fragment>
       <StatusBar />
 
-      <View style={s.container}>
-      </View>
+      <View style={s.container} />
     </React.Fragment>
   )
 }

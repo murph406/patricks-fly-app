@@ -1,7 +1,9 @@
+import React from 'react'
+
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigationState } from '@react-navigation/native'
+
 import { RECENTS_KEY } from '@utils/Vars'
-import React from 'react'
 
 const SearchContext = React.createContext(null)
 

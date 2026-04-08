@@ -1,15 +1,17 @@
 import React from 'react'
+
 import { ScrollView, StyleSheet, View } from 'react-native'
 
-import DraggableDrawer from '@components/composites/DraggableDrawer'
-import useStyles from '@hooks/useStyles'
-import { useMapContext } from '@pages/Map/MapContext'
-import Divider from '@components/elements/Divider'
+
 import TsunamiIcon from '@assets/icons/tsunami.svg'
+import DraggableDrawer from '@components/composites/DraggableDrawer'
 import DrawerHeader from '@components/composites/DrawerHeader'
-import { useTidalFlow } from '@hooks/useTidalFlow'
+import Divider from '@components/elements/Divider'
 import Section from '@components/elements/Section'
 import TidalFlowChart from '@features/tides/TidalChart'
+import useStyles from '@hooks/useStyles'
+import { useTidalFlow } from '@hooks/useTidalFlow'
+import { useMapContext } from '@pages/Map/MapContext'
 
 const TidalStationDrawer = () => {
     const { selected, setSelected, tidalDrawerRef, mainDrawerRef, DEFAULT_DRAWER_HEIGHT } = useMapContext()

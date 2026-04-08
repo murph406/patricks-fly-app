@@ -1,8 +1,10 @@
+import React from 'react'
+
+import { StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
+
 import Text from '@components/elements/Text'
 import useAnimation from '@hooks/useAnimation'
 import useStyles from '@hooks/useStyles'
-import React from 'react'
-import { StyleSheet, TouchableOpacity, View, Animated } from 'react-native'
 
 const RiverStationCard = ({ label, id, onPress }) => {
   const [pressed, setPressed] = React.useState(false)

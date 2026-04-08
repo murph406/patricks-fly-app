@@ -11,7 +11,7 @@ const initialLayout = {
 const layoutReducer = (state, action) => {
   const shouldDisable = (map) => {
     const count = Object.keys(map).length
-    let flag = count === 0
+    const flag = count === 0
     return flag
   }
 

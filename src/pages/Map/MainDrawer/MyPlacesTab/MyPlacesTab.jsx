@@ -2,8 +2,8 @@ import React from 'react'
 
 import { StyleSheet, View } from 'react-native'
 
-import useStyles from '@hooks/useStyles'
 import EmptyState from '@components/composites/EmptyState'
+import useStyles from '@hooks/useStyles'
 
 const MyPlacesTab = () => {
   const s = useStyles(createStyles)
