@@ -1,0 +1,15 @@
+// {
+//   id: 'uuid-v4',
+//   type: 'river' | 'beach' | 'custom',
+//   name: 'My Spot on the Yak',
+//   description: null,
+//   images: [],
+//   riverId: 'yakima',
+//   stationId: 'UMTW1',
+//   tidalStationId: null,
+//   lat: 46.8581,
+//   lng: -120.5059,
+//   savedAt: '2026-04-01T00:00:00Z',
+//   visitedAt: null,
+//   favorite: false,
+// }

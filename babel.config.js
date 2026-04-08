@@ -21,6 +21,7 @@ module.exports = function (api) {
                         '@constants': './src/constants',
                         '@config': './src/config',
                         '@api': './src/api',
+                        '@db': './src/db',
                         '@': './src',
                     },
                 },
