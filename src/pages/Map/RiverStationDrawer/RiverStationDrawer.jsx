@@ -1,20 +1,28 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
+import { format, parseISO } from 'date-fns'
 
 import DraggableDrawer from '@components/composites/DraggableDrawer'
 import useStyles from '@hooks/useStyles'
 import { useMapContext } from '@pages/Map/MapContext'
 import Divider from '@components/elements/Divider'
-import HealingIcon from '@assets/icons/health.svg'
 import WaterIcon from '@assets/icons/water.svg'
-import Text from '@components/elements/Text'
 import DrawerHeader from '@components/composites/DrawerHeader'
+import { useRiverFlow } from '@hooks/useRiverFlow'
+import Section from '@components/elements/Section'
+import RiverFlowChart from '@features/rivers/RiverFlowChart'
 
-const RiverDrawer = () => {
+const RiverStationDrawer = () => {
     const { selected, setSelected, riverDrawerRef, mainDrawerRef, DEFAULT_DRAWER_HEIGHT } = useMapContext()
     const s = useStyles(createStyles, { DEFAULT_DRAWER_HEIGHT })
 
-    const { label, riverName } = selected
+    const { label, riverName, id } = selected
+    const riverFlow = useRiverFlow(id)
+
+    const lastObserved = React.useMemo(() => {
+        if (riverFlow?.observed?.issuedTime) return format(parseISO(riverFlow.observed.issuedTime), 'MMM d, h:mm a')
+        return null
+    }, [riverFlow])
 
     React.useEffect(() => {
         if (selected?.type === 'river-station') riverDrawerRef.current.open()
@@ -51,13 +59,9 @@ const RiverDrawer = () => {
 
                 <ScrollView >
                     <View style={s.body}>
-                        <View style={s.textWrapper}>
-                            <Text>
-                                <Text type='subtitle'>Location</Text>
-                                <Text> </Text>
-                            </Text>
-                            <Text type='default' color='text2'>{riverName}</Text>
-                        </View>
+                        <Section label='Flow Chart' suffix={lastObserved && `Updated ${lastObserved}`}>
+                            <RiverFlowChart {...riverFlow} />
+                        </Section>
                     </View>
                 </ScrollView>
             </View>
@@ -106,4 +110,4 @@ const createStyles = (theme, _, props) => {
     })
 }
 
-export default RiverDrawer
+export default RiverStationDrawer

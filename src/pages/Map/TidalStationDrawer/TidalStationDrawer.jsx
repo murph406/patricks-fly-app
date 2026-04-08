@@ -6,14 +6,17 @@ import useStyles from '@hooks/useStyles'
 import { useMapContext } from '@pages/Map/MapContext'
 import Divider from '@components/elements/Divider'
 import TsunamiIcon from '@assets/icons/tsunami.svg'
-import Text from '@components/elements/Text'
 import DrawerHeader from '@components/composites/DrawerHeader'
+import { useTidalFlow } from '@hooks/useTidalFlow'
+import Section from '@components/elements/Section'
+import TidalFlowChart from '@features/tides/TidalChart'
 
-const TidalDrawer = () => {
+const TidalStationDrawer = () => {
     const { selected, setSelected, tidalDrawerRef, mainDrawerRef, DEFAULT_DRAWER_HEIGHT } = useMapContext()
     const s = useStyles(createStyles, { DEFAULT_DRAWER_HEIGHT })
 
-    const { name, location } = selected
+    const { name, location, id } = selected
+    const tidalFlow = useTidalFlow(id)
 
     React.useEffect(() => {
         if (selected?.type === 'tidal-station') tidalDrawerRef.current.open()
@@ -48,13 +51,9 @@ const TidalDrawer = () => {
 
                 <ScrollView >
                     <View style={s.body}>
-                        <View style={s.textWrapper}>
-                            <Text>
-                                <Text type='subtitle'>Location</Text>
-                                <Text> </Text>
-                            </Text>
-                            <Text type='default' color='text2'>{location}</Text>
-                        </View>
+                        <Section label='Tidal Chart'>
+                            <TidalFlowChart {...tidalFlow} />
+                        </Section>
                     </View>
                 </ScrollView>
             </View>
@@ -103,4 +102,4 @@ const createStyles = (theme, _, props) => {
     })
 }
 
-export default TidalDrawer
+export default TidalStationDrawer

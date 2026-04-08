@@ -127,7 +127,7 @@ const createStyles = (_, dimensions) => {
   const { height } = dimensions
 
   return StyleSheet.create({
-    defaultMaxDrawerHeight: height * .4,
+    defaultMaxDrawerHeight: height * .5,
   })
 }
 
